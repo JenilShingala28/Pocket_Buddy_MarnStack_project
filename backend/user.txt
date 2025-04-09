@@ -1,0 +1,15 @@
+// console.log("user file...")
+
+// var userName = 'jenil'
+// var userAge = 22
+
+// const  printUserData = (a) => {
+//     console.log('print user data function is called user.js file',a)
+// }
+// // exports
+// // module.exports = userName
+// // module.exports = userAge
+
+// module.exports = {
+//     userName,userAge,printUserData
+// }

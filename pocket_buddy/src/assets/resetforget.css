@@ -1,0 +1,89 @@
+/* html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+.forget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #efb6c8;
+  padding: 20px;
+}
+
+.form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  background: hsl(283, 23%, 62%);
+  border: 1px solid #efb6c8;
+  box-shadow: 0px 0px 15px rgb(68, 23, 82);
+  width: 100vh;
+  max-width: 400px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #441752;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submit-button {
+  background: #441752;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #efb6c8;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 2px 15px #441752;
+}
+
+.submit-button:hover {
+  background: #efb6c8;
+  color: #441752;
+  border: 1px solid #441752;
+}
+
+/* 📌 Media Query for Small Screens (Mobile) */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 20px;
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  input[type="text"],
+  .submit-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

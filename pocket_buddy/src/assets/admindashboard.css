@@ -1,0 +1,82 @@
+
+
+/* General Styles */
+.admin-dashboard {
+    font-family: 'Poppins', sans-serif;
+    /* max-width: 1200px; */
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #441752;
+    border-radius: 10px;
+    border: 1px solid #efb6c8;
+    box-shadow: 0 2px 15px #441752;
+    text-align: center;
+}
+
+/* Dashboard Heading */
+.admin-dashboard h2 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Stats Container - Two Column Grid */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+/* Stat Box */
+.stat-box {
+    background: #8174a0;
+    border: 1px solid #441752;
+    box-shadow: 0 2px 15px #efb6c8;
+    color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 2px 15px rgb(149, 63, 63);
+}
+
+.stat-box h3 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.stat-box p {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .stats-container {
+        grid-template-columns: 1fr; /* Stack in one column on tablets/mobiles */
+    }
+
+    .admin-dashboard h2 {
+        font-size: 24px;
+    }
+
+    .stat-box h3 {
+        font-size: 20px;
+    }
+
+    .stat-box p {
+        font-size: 22px;
+    }
+}
+

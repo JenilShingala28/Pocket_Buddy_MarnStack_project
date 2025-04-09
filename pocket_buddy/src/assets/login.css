@@ -1,0 +1,158 @@
+
+.login-container {
+    min-width: 300px;
+    width: 40%;
+    margin: 30px auto;
+    padding: 30px;
+    height: auto;
+    background: hsl(283, 23%, 62%);
+    border: 1px solid #EFB6C8;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgb(68, 23, 82);
+    text-align: center;
+}
+
+/* Title */
+.login-container h1 {
+    color: rgb(68, 23, 82);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form Fields */
+.login-group {
+    margin-bottom: 15px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/* Labels */
+.login-group label {
+    font-weight: bold;
+    margin-bottom: 10px;
+   
+}
+
+/* Inputs & Selects */
+.login-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #441752;
+    border-radius: 5px;
+    font-size: 14px;
+    /* margin-bottom: 10px; */
+    
+}
+
+
+/* Error Messages */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+.login-button {
+    background: #441752;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #EFB6C8;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 2px 15px #441752;
+    
+}
+
+.login-button:hover {
+    background: #EFB6C8;
+    color: #441752;
+    border: 1px solid #441752;
+}
+
+/* Container for the forgot password link */
+.forgot-password-container {
+    margin-bottom: 12px;
+  }
+  
+  /* Style the forgot password link */
+  .forgot-password-link {
+    font-size: 14px;
+    color: blue;
+    text-decoration: none;
+    cursor: pointer;
+    transition: text-decoration 0.2s ease-in-out;
+  }
+  
+  /* Hover effect */
+  .forgot-password-link:hover {
+    text-decoration: underline;
+  }
+  
+/* Center align the text */
+.text-center {
+    text-align: center;
+    margin-top: 12px;
+  }
+  
+  /* Style the link */
+  .text-primary {
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out, text-decoration 0.2s ease-in-out;
+  }
+  
+  /* Hover effect */
+  .text-primary:hover {
+    color: darkblue;
+    text-decoration: underline;
+  }
+  
+
+/* ===========================
+   🔹 Responsive Design
+=========================== */
+
+/* Tablets (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .login-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .login-group input {
+        width: 100%;
+    }
+}
+
+/* Mobile (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .login-container {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    .login-container h1 {
+        font-size: 20px;
+    }
+    
+    .login-group label {
+        font-size: 14px;
+    }
+    
+    .login-button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+

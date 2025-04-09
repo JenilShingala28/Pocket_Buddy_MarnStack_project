@@ -1,0 +1,163 @@
+.contact {
+    padding: 40px 20px;
+    background-color: #441752;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .contact-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .contact-section h2 {
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .contact-section p {
+    color: #fff;
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+  
+  /* Cards container */
+  .contact-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  
+  /* Individual Card */
+  .card {
+    background-color: #8174a0;
+    border: 1px solid #441752;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 12px #efb6c8;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(239, 182, 200, 0.5);
+  }
+  
+  .card h3 {
+    text-align: center;
+    color: #efb6c8;
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+  
+  .card p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.4;
+  }
+  
+  /* Contact Form Styling */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #efb6c8;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px #efb6c8;
+    border: 2px solid #441752;
+  }
+  .contact-form:hover{
+    box-shadow: 0 4px 12px #efb6c8;
+  }
+  
+  .contact-form h3 {
+    color: #441752;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #8174a0;
+    font-size: 16px;
+    transition: border 0.2s ease-in-out;
+    box-shadow: 0 4px 12px #441752;
+    outline: none;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #441752;
+  }
+  
+  .contact-form button {
+    background-color: #441752;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #8174a0;
+    box-shadow: 0 4px 12px #441752;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-form button:hover {
+    background-color: #8174a0;
+    color: #fff;
+    border: 1px solid #441752;
+    
+  }
+  
+  .form-status {
+    margin-top: 10px;
+    font-size: 14px;
+    color: green;
+    font-weight: 500;
+  }
+  
+  /* ✅ Responsive Breakpoints */
+  @media (max-width: 768px) {
+    .contact-section h2 {
+      font-size: 28px;
+    }
+  
+    .contact-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .card {
+      width: 90%;
+    }
+  
+    .contact-form {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-form h3 {
+      font-size: 20px;
+    }
+  
+    .contact-section p {
+      font-size: 14px;
+    }
+  }
+  
