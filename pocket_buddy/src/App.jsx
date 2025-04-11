@@ -119,7 +119,7 @@ function App() {
 
         <Route path="/resetpassword/:token" element={<ResetPassword />}></Route>
         <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
-        {/* <Route path="/ologin" element={<OwnerLogin/>}></Route>
+        {/* <Route path="/ologin" element={<OwnerLogin/>}></Route> 
           <Route path="/osignup" element={<OwnerSignup/>}></Route> */}
 
         <Route path="/aprofile" element={<AdminProfile />}></Route>

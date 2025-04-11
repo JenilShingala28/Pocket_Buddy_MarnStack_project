@@ -27,7 +27,7 @@ export const ViewAdminPro = () => {
         if (imageURL) {
           localStorage.setItem("profileImage", imageURL); // ✅ save image to localStorage
         }
-      }
+      } 
       
     setScreen(res.data.data);
     setisLoader(false);

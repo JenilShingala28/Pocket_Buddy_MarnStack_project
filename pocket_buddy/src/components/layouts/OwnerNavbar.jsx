@@ -81,14 +81,14 @@ export const OwnerNavbar = ({ toggleSidebar }) => {
                 {/* VIEW PROFILE */}
                 <img
                   src={profileImg || "https://via.placeholder.com/50"}
-                  alt="User Avatar"
+                  
                   style={{
                     width: "40px",
                     height: "45px",
                     objectFit: "cover",
 
                     border: "1px solid #441752",
-                    boxShadow: " 0 2px 15px #efb6c8",
+                    boxShadow: " 0 2px 10px rgba(239, 182, 200, 0.38)",
                     backgroundColor: "#fff",
                     transition: "transform 0.2s ease-in-out",
                   }}

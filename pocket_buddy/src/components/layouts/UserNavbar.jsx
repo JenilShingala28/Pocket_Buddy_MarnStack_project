@@ -80,7 +80,7 @@ export const UserNavbar = ({ toggleSidebar }) => {
                 {/* VIEW PROFILE */}
                 <img
                   src={profileImg || "https://via.placeholder.com/50"}
-                  alt="User Avatar"
+                  
                   style={{
                     width: "40px",
                     height: "45px",
@@ -110,7 +110,7 @@ export const UserNavbar = ({ toggleSidebar }) => {
                   padding: 7,
                   
                   border: "1px solid #8174a0",
-                  boxShadow:" 0 2px 15px #efb6c8",
+                  boxShadow:" 0 2px 10px rgba(239, 182, 200, 0.37)",
                 }}
                 onClick={() => {
                   localStorage.clear();
