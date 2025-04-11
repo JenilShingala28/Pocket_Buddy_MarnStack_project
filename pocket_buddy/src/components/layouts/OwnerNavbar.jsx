@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import hamburgermenu from "../../assets/images/hamburgermenu.png";
+import resto from "../../assets/images/resto.jpg"
 import { Link } from "react-router-dom";
 
 export const OwnerNavbar = ({ toggleSidebar }) => {
@@ -80,7 +81,7 @@ export const OwnerNavbar = ({ toggleSidebar }) => {
               <Link className="nav-link" to="/adprofile">
                 {/* VIEW PROFILE */}
                 <img
-                  src={profileImg || "https://via.placeholder.com/50"}
+                  src={profileImg || resto}
                   
                   style={{
                     width: "40px",
@@ -88,7 +89,7 @@ export const OwnerNavbar = ({ toggleSidebar }) => {
                     objectFit: "cover",
 
                     border: "1px solid #441752",
-                    boxShadow: " 0 2px 10px rgba(239, 182, 200, 0.38)",
+                    boxShadow: " 0 2px 10px rgba(239, 182, 200, 0.45)",
                     backgroundColor: "#fff",
                     transition: "transform 0.2s ease-in-out",
                   }}
@@ -110,7 +111,7 @@ export const OwnerNavbar = ({ toggleSidebar }) => {
                   transition: "0.3s",
                   padding: 7,
                   border: "1px solid #8174a0",
-                  boxShadow:" 0 2px 15px #efb6c8",
+                  boxShadow:" 0 2px 10px rgba(239, 182, 200, 0.36)",
                 }}
                 onClick={() => {
                   localStorage.clear();

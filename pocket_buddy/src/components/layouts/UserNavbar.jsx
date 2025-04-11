@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import hamburgermenu from "../../assets/images/hamburgermenu.png";
+import profile from "../../assets/images/profile.jpg"
 import { Link } from "react-router-dom";
 
 export const UserNavbar = ({ toggleSidebar }) => {
@@ -79,7 +80,7 @@ export const UserNavbar = ({ toggleSidebar }) => {
               <Link className="nav-link" to="/adprofile">
                 {/* VIEW PROFILE */}
                 <img
-                  src={profileImg || "https://via.placeholder.com/50"}
+                  src={profileImg || profile}
                   
                   style={{
                     width: "40px",
@@ -87,7 +88,7 @@ export const UserNavbar = ({ toggleSidebar }) => {
                     objectFit: "cover",
 
                     border: "1px solid #441752",
-                    boxShadow: " 0 2px 15px #efb6c8",
+                    boxShadow: " 0 2px 10px rgba(239, 182, 200, 0.46)",
                     backgroundColor: "#fff",
                     transition: "transform 0.2s ease-in-out",
                   }}
