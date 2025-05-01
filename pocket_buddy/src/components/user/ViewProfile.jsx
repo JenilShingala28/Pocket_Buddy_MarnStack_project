@@ -38,7 +38,7 @@ export const ViewProfile = () => {
     <div className="main">
       <div className="user-profile-container">
         {isLoader == true && <CustomLoader />}
-        <h2 className="title">USER PROFILE</h2>
+        <h2 className="title1">USER PROFILE</h2>
         <div className="profile">
           {Array.isArray(screen) && screen.length > 0 ? (
             screen.map((sc) => (
@@ -67,7 +67,7 @@ export const ViewProfile = () => {
                     <strong>Address:</strong> {sc.address || "N/A"}
                   </div>
                   <Link
-                    to={`/updateprofile/${sc._id}`}
+                    to={`/updateuprofile/${sc._id}`}
                     className="update-button"
                   >
                     Update

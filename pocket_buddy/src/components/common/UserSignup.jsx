@@ -47,7 +47,7 @@ export const UserSignup = () => {
         // alert("user deleted..");
         toast.success("User signup successfully !!", {
           position: "top-center",
-          autoClose: 3000,
+          autoClose: 1000,
           hideProgressBar: false,
           closeOnClick: false,
           pauseOnHover: true,
@@ -58,11 +58,11 @@ export const UserSignup = () => {
         });
         setTimeout(() => {
           navigate("/login");
-        }, 4000);
+        }, 1500);
       } else {
         toast.error("Already Signup!", {
           position: "top-center",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: false,
           pauseOnHover: true,
@@ -79,7 +79,7 @@ export const UserSignup = () => {
     } catch (error) {
       toast.error("Something went wrong!", {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: false,
         pauseOnHover: true,

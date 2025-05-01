@@ -70,7 +70,7 @@ export const ResetPassword = () => {
       />
       <div className="forget">
         <div className="form-container">
-          <h1>RESET PASSWORD COMPONENT</h1>
+          <h1>RESET PASSWORD </h1>
 
           <form onSubmit={handleSubmit(submitHandler)}>
             <div className="form-group">

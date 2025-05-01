@@ -23,7 +23,9 @@ routes.post("/ologin", userController.ologin);
 routes.delete("/user/:id", userController.deleteUser);
 
 routes.get("/userby/:id", userController.getUserById);
-routes.put("/updateprofileby/:id", userController.updateUserProfileById);
+routes.put("/updateuprofileby/:id", userController.updateUserProfileById);
+routes.put("/updateoprofileby/:id", userController.updateOwnerProfileById);
+routes.put("/updateaprofileby/:id", userController.updateAdminProfileById);
 routes.post("/userfile", userController.addWithUserFile);
 routes.get("/getalluserby/:userId", userController.getAllUserByUserId);
 

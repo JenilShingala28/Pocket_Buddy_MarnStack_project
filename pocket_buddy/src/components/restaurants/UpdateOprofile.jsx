@@ -24,7 +24,7 @@ export const UpdateOprofile = () => {
       delete data._id;
       console.log(data);
   
-      const res = await axios.put("/updateprofileby/" + id, data);
+      const res = await axios.put("/updateoprofileby/" + id, data);
       console.log(res.data);
   
       navigate("/viewoprofile");

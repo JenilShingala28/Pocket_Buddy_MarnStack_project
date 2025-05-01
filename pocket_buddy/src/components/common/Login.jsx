@@ -23,7 +23,7 @@ export const Login = () => {
       if (res.status === 200) {
         toast.success("User login successfully !!", {
           position: "top-center",
-          autoClose: 3000,
+          autoClose: 1000,
           hideProgressBar: false,
           closeOnClick: false,
           pauseOnHover: true,
@@ -48,11 +48,11 @@ export const Login = () => {
            else if (res.data.data.roleId.name === "ADMIN") {
              navigate("/admin");
            }
-        }, 4000);
+        }, 1500);
       } else {
         toast.error("login went wrong!", {
           position: "top-center",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: false,
           pauseOnHover: true,
@@ -66,7 +66,7 @@ export const Login = () => {
     } catch (error) {
       toast.error("Something went wrong!", {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: false,
         pauseOnHover: true,

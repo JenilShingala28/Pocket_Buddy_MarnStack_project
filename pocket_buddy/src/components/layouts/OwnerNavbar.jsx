@@ -78,7 +78,7 @@ export const OwnerNavbar = ({ toggleSidebar }) => {
               </Link>
             </li>
             <li className="nav-item" style={{ paddingBottom: "12px" }}>
-              <Link className="nav-link" to="/adprofile">
+              <Link className="nav-link" to="/viewoprofile">
                 {/* VIEW PROFILE */}
                 <img
                   src={profileImg || resto}

@@ -344,6 +344,52 @@ const updateUserProfileById = async (req, res) => {
   }
 };
 
+const updateOwnerProfileById = async (req, res) => {
+  try {
+    const updateData = await UserModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    if (!updateData) {
+      return res.status(404).json({ message: "User Profile not found!" });
+    } else {
+      res.status(200).json({
+        message: "User Profile update successfully",
+        data: updateData,
+      });
+    }
+  } catch (err) {
+    res.status(500).json({
+      message: err.message,
+    });
+  }
+};
+
+const updateAdminProfileById = async (req, res) => {
+  try {
+    const updateData = await UserModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    if (!updateData) {
+      return res.status(404).json({ message: "User Profile not found!" });
+    } else {
+      res.status(200).json({
+        message: "User Profile update successfully",
+        data: updateData,
+      });
+    }
+  } catch (err) {
+    res.status(500).json({
+      message: err.message,
+    });
+  }
+};
+
 const forgetPassword = async (req, res) => {
   const email = req.body.email;
   const foundUser = await UserModel.findOne({ email: email });
@@ -419,6 +465,8 @@ module.exports = {
   getAllUserByUserId,
   getUserById,
   updateUserProfileById,
+  updateAdminProfileById,
+  updateOwnerProfileById,
   deleteUserById,
 
   forgetPassword,

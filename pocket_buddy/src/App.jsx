@@ -124,15 +124,15 @@ function App() {
 
         <Route path="/aprofile" element={<AdminProfile />}></Route>
         <Route path="/adprofile" element={<ViewAdminPro />}></Route>
-        <Route path="/updateprofile/:id" element={<UpdateAdPro />}></Route>
+        <Route path="/updateaprofile/:id" element={<UpdateAdPro />}></Route>
 
         <Route path="/oprofile" element={<Oprofile />}></Route>
         <Route path="/viewoprofile" element={<ViewOprofile />}></Route>
-        <Route path="/updateprofile/:id" element={<UpdateOprofile />}></Route>
+        <Route path="/updateoprofile/:id" element={<UpdateOprofile />}></Route>
 
         <Route path="/userprofile" element={<UserProfile />}></Route>
         <Route path="/myprofile" element={<ViewProfile />}></Route>
-        <Route path="/updateprofile/:id" element={<UpdateMyProfile />}></Route>
+        <Route path="/updateuprofile/:id" element={<UpdateMyProfile />}></Route>
 
         {/* <Route path="/restolist" element={<RestaurentList />}></Route> */}
 

@@ -108,38 +108,38 @@ export const UserList = () => {
       },
 
 
-    // ✅ View Button
-    {
-      field: "view",
-      headerName: "View",
-      width: 150,
-      renderCell: (params) => (
-        <Link to="/admin/alluser">
-          <Button
-            variant="contained"
-            sx={{
-              background: "#441752",
-              color: "white",
-              padding: "10px 15px",
-              fontSize: "16px",
-              border: "1px solid #EFB6C8",
-              borderRadius: "5px",
-              cursor: "pointer",
-              width: "100%",
-              boxShadow: "0 2px 15px #441752",
-              "&:hover": {
-                background: " #8174a0",
-                color: " #fff",
-                border: "1px solid #441752",
-                boxShadow: "0 2px 15px #441752",
-              },
-            }}
-          >
-            View
-          </Button>
-        </Link>
-      ),
-    },
+    // // ✅ View Button
+    // {
+    //   field: "view",
+    //   headerName: "View",
+    //   width: 150,
+    //   renderCell: (params) => (
+    //     <Link to="/admin/alluser">
+    //       <Button
+    //         variant="contained"
+    //         sx={{
+    //           background: "#441752",
+    //           color: "white",
+    //           padding: "10px 15px",
+    //           fontSize: "16px",
+    //           border: "1px solid #EFB6C8",
+    //           borderRadius: "5px",
+    //           cursor: "pointer",
+    //           width: "100%",
+    //           boxShadow: "0 2px 15px #441752",
+    //           "&:hover": {
+    //             background: " #8174a0",
+    //             color: " #fff",
+    //             border: "1px solid #441752",
+    //             boxShadow: "0 2px 15px #441752",
+    //           },
+    //         }}
+    //       >
+    //         View
+    //       </Button>
+    //     </Link>
+    //   ),
+    // },
 
     // ✅ Delete Button
     {

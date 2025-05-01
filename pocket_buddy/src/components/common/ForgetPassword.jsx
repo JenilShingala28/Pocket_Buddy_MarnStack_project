@@ -55,7 +55,7 @@ export const ForgetPassword = () => {
         transition={Bounce}
       />
       <div className="form-container">
-        <h1>FORGET COMPONENT</h1>
+        <h1>FORGET PASSWORD</h1>
         <form onSubmit={handleSubmit(submitHandler)}>
           <div className="form-group">
             <label>Emil</label>
@@ -71,7 +71,7 @@ export const ForgetPassword = () => {
           </div>
 
           <div>
-            <input type="submit" className="submit-button" value="Forget"></input>
+            <input type="submit" className="submit-button" value="Sent Reset Link"></input>
           </div>
         </form>
       </div>

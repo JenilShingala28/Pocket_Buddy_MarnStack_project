@@ -24,7 +24,7 @@ export const UpdateAdPro = () => {
     delete data._id;
     console.log(data);
 
-    const res = await axios.put("/updateprofileby/" + id, data);
+    const res = await axios.put("/updateaprofileby/" + id, data);
     console.log(res.data);
 
     navigate("/adprofile");

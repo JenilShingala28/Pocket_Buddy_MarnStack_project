@@ -25,7 +25,7 @@ export const UpdateMyProfile = () => {
     delete data._id;
     console.log(data);
 
-    const res = await axios.put("/updateprofileby/" + id, data);
+    const res = await axios.put("/updateuprofileby/" + id, data);
     console.log(res.data);
 
     navigate("/myprofile");

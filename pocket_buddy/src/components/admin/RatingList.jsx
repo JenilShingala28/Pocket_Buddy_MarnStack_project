@@ -86,7 +86,7 @@ export const RatingList = () => {
     },
     { field: "restaurantName", headerName: "restaurantName", width: 250 },
     { field: "comments", headerName: "comments", width: 400 },
-    { field: "rating", headerName: "rating", width: 250 },
+    { field: "rating", headerName: "rating", width: 100 },
     
     // ✅ View Button
     {
