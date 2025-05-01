@@ -111,7 +111,7 @@ export const OfferList = () => {
     {
       field: "view",
       headerName: "View",
-      width: 150,
+      width: 100,
       renderCell: (params) => (
         <Link to="/admin/myoffer">
           <Button
@@ -144,7 +144,7 @@ export const OfferList = () => {
     {
       field: "delete",
       headerName: "Delete",
-      width: 150,
+      width: 100,
       renderCell: (params) => (
         <Button
           variant="contained"

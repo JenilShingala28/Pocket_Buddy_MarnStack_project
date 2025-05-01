@@ -232,7 +232,7 @@ export const ViewRestaurent = () => {
     //           >
     //             Update
     //           </Link> */}
-    //             {/* <button
+                 {/* <button
     //             onClick={() => {
     //               deleteRestaurant(sc._id);
     //             }}

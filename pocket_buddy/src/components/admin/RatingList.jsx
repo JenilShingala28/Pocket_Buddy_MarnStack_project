@@ -92,7 +92,7 @@ export const RatingList = () => {
     {
       field: "view",
       headerName: "View",
-      width: 150,
+      width: 100,
       renderCell: (params) => (
         <Link to="/admin/allrating">
           <Button
@@ -125,7 +125,7 @@ export const RatingList = () => {
     {
       field: "delete",
       headerName: "Delete",
-      width: 150,
+      width: 100,
       renderCell: (params) => (
         <Button
           variant="contained"

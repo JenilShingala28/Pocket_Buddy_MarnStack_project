@@ -118,7 +118,7 @@ export const RestaurentList = () => {
     {
       field: "view",
       headerName: "View",
-      width: 150,
+      width: 100,
       renderCell: (params) => (
         <Link to="/admin/myresto">
           <Button
