@@ -53,6 +53,8 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users",
   },
+},{
+  timestamps : true
 });
 
 module.exports = mongoose.model("users", userSchema);

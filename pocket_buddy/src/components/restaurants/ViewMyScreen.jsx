@@ -10,6 +10,17 @@ export const ViewMyScreen = () => {
   const [screen, setScreen] = useState([]);
   const [isLoader, setisLoader] = useState(false);
 
+  const [ratings, setRatings] = useState([]);
+
+  const getAllRatings = async () => {
+    try {
+      const res = await axios.get("/rating/getall");
+      setRatings(res.data.data);
+    } catch (error) {
+      console.error("Error fetching ratings:", error);
+    }
+  };
+
   const getAllMyScreen = async () => {
     console.log(localStorage.getItem("id"));
 
@@ -25,7 +36,37 @@ export const ViewMyScreen = () => {
 
   useEffect(() => {
     getAllMyScreen();
+    getAllRatings();
   }, []);
+
+  const getAverageRating = (restaurantName) => {
+    const restaurantRatings = ratings.filter(
+      (rating) => rating.restaurantName === restaurantName
+    );
+    if (restaurantRatings.length === 0) return 0;
+
+    const total = restaurantRatings.reduce((sum, r) => sum + r.rating, 0);
+    return (total / restaurantRatings.length).toFixed(1);
+  };
+
+  const renderStars = (rating) => {
+    const stars = [];
+
+    for (let i = 0; i < 5; i++) {
+      const fill = Math.max(0, Math.min(1, rating - i)) * 100;
+
+      stars.push(
+        <div key={i} className="star-wrapper">
+          <span className="star empty">★</span>
+          <span className="star full" style={{ width: `${fill}%` }}>
+            ★
+          </span>
+        </div>
+      );
+    }
+
+    return <div className="star-rating">{stars}</div>;
+  };
 
   const deleteLocation = async (id) => {
     try {
@@ -80,11 +121,19 @@ export const ViewMyScreen = () => {
         {Array.isArray(screen) && screen.length > 0 ? (
           screen.map((sc) => (
             <div className="screen-card1" key={sc._id}>
-              <img
-                src={sc?.imageURL || "https://via.placeholder.com/200"}
-                alt="Screen"
-                className="screen-image"
-              />
+              <div className="image-container">
+                <img
+                  src={sc?.imageURL || "https://via.placeholder.com/200"}
+                  alt="Screen"
+                  className="screen-image"
+                />
+                <div className="rating-overlay">
+                  {renderStars(Number(getAverageRating(sc.title)))}
+                  <span className="rating-value">
+                    ({getAverageRating(sc.title)})
+                  </span>
+                </div>
+              </div>
               <div className="screen-details">
                 <div className="info">
                   <strong>Restaurant Name:</strong>{" "}
@@ -108,6 +157,28 @@ export const ViewMyScreen = () => {
                 </div>
                 <div className="info">
                   <strong>Timing:</strong> {sc.timing || "N/A"}
+                </div>
+                <div className="info">
+                  <strong>Avg Rating:</strong>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    {renderStars(Number(getAverageRating(sc.title)))}
+                    <span
+                      style={{
+                        marginLeft: "6px",
+                        marginTop:"5px",
+                        color: "#444",
+                        fontSize: "14px",
+                      }}
+                    >
+                      ({getAverageRating(sc.title)})
+                    </span>
+                  </div>
                 </div>
                 <Link
                   to={`/owner/updatescreen1/${sc._id}`}

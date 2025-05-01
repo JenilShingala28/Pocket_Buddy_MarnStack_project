@@ -15,6 +15,18 @@ export const Offer = () => {
   const [startDateFilter, setStartDateFilter] = useState("");
   const [endDateFilter, setEndDateFilter] = useState("");
 
+  const [ratings, setRatings] = useState([]);
+
+  // Fetch all ratings
+  const getAllRatings = async () => {
+    try {
+      const res = await axios.get("/rating/getall"); // Assuming there's an endpoint to fetch ratings
+      setRatings(res.data.data);
+    } catch (error) {
+      console.error("Error fetching ratings:", error);
+    }
+  };
+
   const getAllOfferMyScreen = async () => {
     setisLoader(true);
     try {
@@ -29,7 +41,40 @@ export const Offer = () => {
 
   useEffect(() => {
     getAllOfferMyScreen();
+    getAllRatings();
   }, []);
+
+    // Function to calculate the average rating for an offer
+
+    const getAverageRating = (restaurantName) => {
+      const restaurantRatings = ratings.filter(
+        (rating) => rating.restaurantName === restaurantName
+      );
+  
+      if (restaurantRatings.length === 0) return 0;
+  
+      const total = restaurantRatings.reduce((sum, r) => sum + r.rating, 0);
+      return (total / restaurantRatings.length).toFixed(1);
+    };
+  
+    const renderStars = (rating) => {
+      const stars = [];
+  
+      for (let i = 0; i < 5; i++) {
+        const fill = Math.max(0, Math.min(1, rating - i)) * 100;
+  
+        stars.push(
+          <div key={i} className="star-wrapper">
+            <span className="star empty">★</span>
+            <span className="star full" style={{ width: `${fill}%` }}>
+              ★
+            </span>
+          </div>
+        );
+      }
+  
+      return <div className="star-rating">{stars}</div>;
+    };
 
   // Apply all filters
   useEffect(() => {
@@ -105,11 +150,19 @@ export const Offer = () => {
         {Array.isArray(filteredScreen) && filteredScreen.length > 0 ? (
           filteredScreen.map((sc) => (
             <div className="screen-card" key={sc._id}>
-              <img
-                src={sc?.imageURL || "https://via.placeholder.com/200"}
-                alt="Screen"
-                className="screen-image"
-              />
+              <div className="image-container">
+                <img
+                  src={sc?.imageURL || "https://via.placeholder.com/200"}
+                  alt="Screen"
+                  className="screen-image"
+                />
+                <div className="rating-overlay">
+                  {renderStars(Number(getAverageRating(sc.restaurantName)))}
+                  <span className="rating-value">
+                    ({getAverageRating(sc.restaurantName)})
+                  </span>
+                </div>
+              </div>
               <div className="screen-details">
                 <div className="info">
                   <strong>Restaurant Name:</strong> {sc.restaurantName || "N/A"}
@@ -132,9 +185,31 @@ export const Offer = () => {
                 <div className="info">
                   <strong>Food Type:</strong> {sc.foodType || "N/A"}
                 </div>
-                <div className="info">
+                {/* <div className="info">
                   <strong>Terms & Conditions:</strong>{" "}
                   {sc.termsConditions || "N/A"}
+                </div> */}
+                <div className="info">
+                  <strong>Avg Rating:</strong>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    {renderStars(Number(getAverageRating(sc.restaurantName)))}
+                    <span
+                      style={{
+                        marginLeft: "6px",
+                        marginTop: "5px",
+                        color: "#444",
+                        fontSize: "14px",
+                      }}
+                    >
+                      ({getAverageRating(sc.restaurantName)})
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

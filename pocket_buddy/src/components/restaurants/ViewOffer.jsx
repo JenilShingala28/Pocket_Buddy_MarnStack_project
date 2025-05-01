@@ -9,6 +9,17 @@ export const ViewOffer = () => {
   const [screen, setScreen] = useState([]);
   const [isLoader, setisLoader] = useState(false);
 
+  const [ratings, setRatings] = useState([]);
+
+  const getAllRatings = async () => {
+    try {
+      const res = await axios.get("/rating/getall");
+      setRatings(res.data.data);
+    } catch (error) {
+      console.error("Error fetching ratings:", error);
+    }
+  };
+
   const getAllOfferMyScreen = async () => {
     console.log(localStorage.getItem("id"));
 
@@ -24,7 +35,40 @@ export const ViewOffer = () => {
 
   useEffect(() => {
     getAllOfferMyScreen();
+    getAllRatings();
   }, []);
+
+  // Function to calculate the average rating for an offer
+
+  const getAverageRating = (restaurantName) => {
+    const restaurantRatings = ratings.filter(
+      (rating) => rating.restaurantName === restaurantName
+    );
+
+    if (restaurantRatings.length === 0) return 0;
+
+    const total = restaurantRatings.reduce((sum, r) => sum + r.rating, 0);
+    return (total / restaurantRatings.length).toFixed(1);
+  };
+
+  const renderStars = (rating) => {
+    const stars = [];
+
+    for (let i = 0; i < 5; i++) {
+      const fill = Math.max(0, Math.min(1, rating - i)) * 100;
+
+      stars.push(
+        <div key={i} className="star-wrapper">
+          <span className="star empty">★</span>
+          <span className="star full" style={{ width: `${fill}%` }}>
+            ★
+          </span>
+        </div>
+      );
+    }
+
+    return <div className="star-rating">{stars}</div>;
+  };
 
   const deleteOffer = async (id) => {
     try {
@@ -79,11 +123,19 @@ export const ViewOffer = () => {
         {Array.isArray(screen) && screen.length > 0 ? (
           screen.map((sc) => (
             <div className="screen-card1" key={sc._id}>
-              <img
-                src={sc?.imageURL || "https://via.placeholder.com/200"}
-                alt="Screen"
-                className="screen-image"
-              />
+              <div className="image-container">
+                <img
+                  src={sc?.imageURL || "https://via.placeholder.com/200"}
+                  alt="Screen"
+                  className="screen-image"
+                />
+                <div className="rating-overlay">
+                  {renderStars(Number(getAverageRating(sc.restaurantName)))}
+                  <span className="rating-value">
+                    ({getAverageRating(sc.restaurantName)})
+                  </span>
+                </div>
+              </div>
               <div className="screen-details">
               <div className="info">
                   <strong>Restaurant Name:</strong> {sc.restaurantName || "No Description"}

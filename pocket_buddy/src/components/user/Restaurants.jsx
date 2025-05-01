@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../../assets/screencard.css";
 import { CustomLoader } from "../common/CustomLoader";
 
-export const Restaurants = () => { 
+export const Restaurants = () => {
   const [screen, setScreen] = useState([]);
   const [filteredScreens, setFilteredScreens] = useState([]);
   const [isLoader, setIsLoader] = useState(false);
@@ -15,6 +15,17 @@ export const Restaurants = () => {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
+
+  const [ratings, setRatings] = useState([]);
+
+  const getAllRatings = async () => {
+    try {
+      const res = await axios.get("/rating/getall");
+      setRatings(res.data.data);
+    } catch (error) {
+      console.error("Error fetching ratings:", error);
+    }
+  };
 
   // Fetch all restaurants
   const getAllMyScreen = async () => {
@@ -50,7 +61,37 @@ export const Restaurants = () => {
     getAllStates();
     getAllCities();
     getAllAreas();
+    getAllRatings();
   }, []);
+
+  const getAverageRating = (restaurantName) => {
+    const restaurantRatings = ratings.filter(
+      (rating) => rating.restaurantName === restaurantName
+    );
+    if (restaurantRatings.length === 0) return 0;
+
+    const total = restaurantRatings.reduce((sum, r) => sum + r.rating, 0);
+    return (total / restaurantRatings.length).toFixed(1);
+  };
+
+  const renderStars = (rating) => {
+    const stars = [];
+
+    for (let i = 0; i < 5; i++) {
+      const fill = Math.max(0, Math.min(1, rating - i)) * 100;
+
+      stars.push(
+        <div key={i} className="star-wrapper">
+          <span className="star empty">★</span>
+          <span className="star full" style={{ width: `${fill}%` }}>
+            ★
+          </span>
+        </div>
+      );
+    }
+
+    return <div className="star-rating">{stars}</div>;
+  };
 
   // Handlers
   const handleStateChange = (e) => {
@@ -148,11 +189,19 @@ export const Restaurants = () => {
         {Array.isArray(filteredScreens) && filteredScreens.length > 0 ? (
           filteredScreens.map((sc) => (
             <div className="screen-card" key={sc._id}>
-              <img
-                src={sc?.imageURL || "https://via.placeholder.com/200"}
-                alt="Screen"
-                className="screen-image"
-              />
+              <div className="image-container">
+                <img
+                  src={sc?.imageURL || "https://via.placeholder.com/200"}
+                  alt="Screen"
+                  className="screen-image"
+                />
+                <div className="rating-overlay">
+                  {renderStars(Number(getAverageRating(sc.title)))}
+                  <span className="rating-value">
+                    ({getAverageRating(sc.title)})
+                  </span>
+                </div>
+              </div>
               <div className="screen-details">
                 <div className="info">
                   <strong>Restaurant Name:</strong> {sc.title || "N/A"}
@@ -174,6 +223,28 @@ export const Restaurants = () => {
                 </div>
                 <div className="info">
                   <strong>Timing:</strong> {sc.timing || "N/A"}
+                </div>
+                <div className="info">
+                  <strong>Avg Rating:</strong>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    {renderStars(Number(getAverageRating(sc.title)))}
+                    <span
+                      style={{
+                        marginLeft: "6px",
+                        marginTop:"5px",
+                        color: "#444",
+                        fontSize: "14px",
+                      }}
+                    >
+                      ({getAverageRating(sc.title)})
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
