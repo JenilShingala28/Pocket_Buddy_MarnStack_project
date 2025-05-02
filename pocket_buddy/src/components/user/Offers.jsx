@@ -112,6 +112,10 @@ export const Offers = () => {
     restaurantName,
   ]);
 
+  const handleCardClick = (restaurantName) => {
+    navigate(`/user/ratings/${encodeURIComponent(restaurantName)}`);
+  }
+
   return (
     <div className="screen-container">
       {isLoader && <CustomLoader />}
@@ -167,7 +171,12 @@ export const Offers = () => {
                   alt="Offer"
                   className="offer-image"
                 />
-                <div className="offer-rating">
+                <div className="offer-rating"
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card click propagation
+                  handleCardClick(sc.restaurantName); // Use actual restaurant name
+                }}
+                >
                   {renderStars(Number(getAverageRating(sc.restaurantName)))}
                   <span className="rating-number">
                     ({getAverageRating(sc.restaurantName)})
