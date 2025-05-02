@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../../assets/screencard.css";
 import { CustomLoader } from "../common/CustomLoader";
+import { useNavigate } from "react-router-dom";
 
 export const Restaurants = () => {
   const [screen, setScreen] = useState([]);
@@ -134,6 +135,12 @@ export const Restaurants = () => {
     setFilteredScreens(filtered);
   };
 
+  const navigate = useNavigate();
+
+  const handleCardClick = (restaurantName) => {
+    navigate(`/user/offers/${encodeURIComponent(restaurantName)}`);
+  };
+
   return (
     <div className="screen-container">
       {isLoader && <CustomLoader />}
@@ -188,7 +195,12 @@ export const Restaurants = () => {
       <div className="screen-grid">
         {Array.isArray(filteredScreens) && filteredScreens.length > 0 ? (
           filteredScreens.map((sc) => (
-            <div className="screen-card" key={sc._id}>
+            <div
+              className="screen-card"
+              key={sc._id}
+              onClick={() => handleCardClick(sc.title)}
+              style={{ cursor: "pointer" }}
+            >
               <div className="image-container">
                 <img
                   src={sc?.imageURL || "https://via.placeholder.com/200"}
@@ -237,7 +249,7 @@ export const Restaurants = () => {
                     <span
                       style={{
                         marginLeft: "6px",
-                        marginTop:"5px",
+                        marginTop: "5px",
                         color: "#444",
                         fontSize: "14px",
                       }}
