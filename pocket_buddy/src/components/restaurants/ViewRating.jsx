@@ -12,15 +12,37 @@ export const ViewRating = () => {
    const [searchTerm, setSearchTerm] = useState("");
 
   const getAllRatingMyScreen = async () => {
-    console.log(localStorage.getItem("id"));
+    //console.log(localStorage.getItem("id"));
+    const ownerId = localStorage.getItem("id"); 
  
     setisLoader(true);
-    const res = await axios.get(
-      // "/rating/byperuser/" + localStorage.getItem("id")
-      "/rating/getall"
-    );
-    console.log(res.data);
-    setScreen(res.data.data);
+    // const res = await axios.get(
+    //   // "/rating/byperuser/" + localStorage.getItem("id")
+    //   "/rating/getall"
+    // );
+    // console.log(res.data);
+    // setScreen(res.data.data);
+
+    try {
+      // Fetch all offers for current owner
+      const offersRes = await axios.get(`/offer/byperuser/${ownerId}`);
+      const ownerRestaurantNames = offersRes.data.data.map(
+        (offer) => offer.restaurantName
+      );
+
+      // Fetch all ratings
+      const ratingsRes = await axios.get("/rating/getall");
+
+      // Filter ratings that belong to the owner's restaurant(s)
+      const filteredRatings = ratingsRes.data.data.filter((rating) =>
+        ownerRestaurantNames.includes(rating.restaurantName)
+      );
+
+      setScreen(filteredRatings);
+    } catch (error) {
+      console.error("Error fetching ratings or offers:", error);
+    }
+
     setisLoader(false);
   };
 

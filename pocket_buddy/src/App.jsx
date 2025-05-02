@@ -157,7 +157,8 @@ function App() {
           </Route>
 
           <Route path="/admin" element={<AdminSidebar />}>
-            <Route path="" element={<Home />}></Route>
+            {/* <Route path="" element={<Home />}></Route> */}
+            <Route path="" element={<DashBord />}></Route>
 
             
             <Route path="myresto" element={<ViewRestaurent />}></Route>          
