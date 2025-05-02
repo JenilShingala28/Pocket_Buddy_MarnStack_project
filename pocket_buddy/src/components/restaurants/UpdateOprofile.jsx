@@ -24,10 +24,37 @@ export const UpdateOprofile = () => {
       delete data._id;
       console.log(data);
   
-      const res = await axios.put("/updateoprofileby/" + id, data);
-      console.log(res.data);
+      // const res = await axios.put("/updateoprofileby/" + id, data);
+      // console.log(res.data);
   
-      navigate("/viewoprofile");
+      // navigate("/viewoprofile");
+
+      const formData = new FormData();
+        
+      // Append all fields to FormData
+      for (const key in data) {
+        if (data[key] && key !== 'image') {
+          formData.append(key, data[key]);
+        }
+      }
+  
+      // Check if an image is selected
+      if (data.image[0]) {
+        formData.append("image", data.image[0]);
+        console.log("Selected image:", data.image[0]);
+      }
+  
+      try {
+        const res = await axios.put("/updateoprofileby/" + id, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        console.log(res.data);
+        navigate("/viewoprofile"); // Navigate after successful update
+      } catch (error) {
+        console.error("Error updating location", error);
+      }
     };
   
     const ValidationSchema = {

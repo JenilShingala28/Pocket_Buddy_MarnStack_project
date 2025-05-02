@@ -50,10 +50,32 @@ export const UpdateMyScreen = () => {
     delete data._id;
     console.log(data);
 
-    const res = await axios.put("/location/updateby/" + id, data);
-    console.log(res.data);
+    const formData = new FormData();
+    
+    // Append all fields to FormData
+    for (const key in data) {
+      if (data[key] && key !== 'image') {
+        formData.append(key, data[key]);
+      }
+    }
 
-    navigate("/owner/myresto");
+    // Check if an image is selected
+    if (data.image[0]) {
+      formData.append("image", data.image[0]);
+      console.log("Selected image:", data.image[0]);
+    }
+
+    try {
+      const res = await axios.put("/location/updateby1/" + id, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res.data);
+      navigate("/owner/myresto"); // Navigate after successful update
+    } catch (error) {
+      console.error("Error updating location", error);
+    }
   };
 
   const ValidationSchema = {

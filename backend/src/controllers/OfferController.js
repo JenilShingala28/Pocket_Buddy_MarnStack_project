@@ -125,6 +125,51 @@ const updateOfferById = async (req, res) => {
   }
 };
 
+const updateOfferById1 = async (req, res) => {
+  try {
+    // Handle the file upload first
+    upload(req, res, async (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({
+          message: err.message,
+        });
+      }
+
+      // Check if an image is uploaded
+      if (req.file) {
+        // If a new image is uploaded, upload it to Cloudinary
+        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(req.file);
+        console.log("Cloudinary Response:", cloudinaryResponse);
+
+        // Store the image URL in the request body
+        req.body.imageURL = cloudinaryResponse.secure_url;
+      }
+
+      // Update the location with the new data, including the new image URL if uploaded
+      const updateData = await offerModel.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true }
+      );
+
+      if (!updateData) {
+        return res.status(404).json({ message: "Offer not found!" });
+      } else {
+        res.status(200).json({
+          message: "Offer updated successfully",
+          data: updateData,
+        });
+      }
+    });
+  } catch (err) {
+    console.error("Error in updating location:", err);
+    res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+};
+
 const getOfferById = async (req, res) => {
   // get data by particular id
   // const foundUserData = await UserModel.findById(req.params.id)
@@ -194,4 +239,6 @@ module.exports = {
   updateOfferById,
   getOfferById,
   addWithOfferFile,
+
+  updateOfferById1
 };

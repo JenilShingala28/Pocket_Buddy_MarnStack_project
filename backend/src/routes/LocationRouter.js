@@ -17,5 +17,6 @@ routes.get(
 
 
 routes.put("/updateby/:id", locationController.updatedLocationById);
+routes.put("/updateby1/:id", locationController.updateLocationById1);
 
 module.exports = routes;

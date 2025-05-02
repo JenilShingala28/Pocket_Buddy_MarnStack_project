@@ -11,4 +11,5 @@ routes.put("/updateofferby/:id", offerController.updateOfferById);
 routes.get("/offerby/:id", offerController.getOfferById);
 routes.post("/offerfile", offerController.addWithOfferFile);
 
+routes.put("/updatewithimg/:id", offerController.updateOfferById1);
 module.exports = routes;
