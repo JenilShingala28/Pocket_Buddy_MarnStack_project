@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CustomLoader } from "../common/CustomLoader";
 //import "../../assets/screencard.css";
 import "../../assets/viewscreen.css"
+import "../../assets/screencardperticuler.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -123,9 +124,9 @@ export const Offer = () => {
       {isLoader && <CustomLoader />}
       <h2 className="title">OUR OFFER</h2>
 
-      <button onClick={() => navigate(-1)} className="back-btn1">
+      {/* <button onClick={() => navigate(-1)} className="back-btn1">
         ⬅ Back
-      </button>
+      </button> */}
 
       {/* 🔍 Filters */}
       
@@ -164,10 +165,10 @@ export const Offer = () => {
       </div>
 
       {/* 📦 Offer Cards */}
-      <div className="screen-grid">
+      <div className="offer-grid">
         {Array.isArray(filteredScreen) && filteredScreen.length > 0 ? (
           filteredScreen.map((sc) => (
-            <div className="screen-card2" key={sc._id}>
+            <div className="offer-card" key={sc._id}>
               <div className="image-container">
                 <img
                   src={sc?.imageURL || "https://via.placeholder.com/200"}

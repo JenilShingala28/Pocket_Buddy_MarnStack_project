@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../../assets/screencard.css";
+import "../../assets/screencardperticuler.css";
 import { CustomLoader } from "../common/CustomLoader";
 import { useNavigate } from "react-router-dom";
 
@@ -226,11 +227,11 @@ export const Restaurants = () => {
       </div>
 
       {/* Restaurant Cards */}
-      <div className="screen-grid">
+      <div className="offer-grid">
         {Array.isArray(filteredScreens) && filteredScreens.length > 0 ? (
           filteredScreens.map((sc) => (
             <div
-              className="screen-card2"
+              className="offer-card"
               key={sc._id}
               onClick={() => handleCardClick(sc.title)}
               style={{ cursor: "pointer" }}
