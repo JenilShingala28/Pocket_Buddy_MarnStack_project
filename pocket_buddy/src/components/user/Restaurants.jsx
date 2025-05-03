@@ -9,6 +9,8 @@ export const Restaurants = () => {
   const [filteredScreens, setFilteredScreens] = useState([]);
   const [isLoader, setIsLoader] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [areas, setAreas] = useState([]);
@@ -135,6 +137,27 @@ export const Restaurants = () => {
     setFilteredScreens(filtered);
   };
 
+  const applyFilters = () => {
+    let filtered = [...screen];
+  
+    if (searchTerm.trim()) {
+      filtered = filtered.filter((sc) =>
+        sc.title?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+  
+    setFilteredScreens(filtered);
+  };
+  
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  useEffect(() => {
+    applyFilters();
+  }, [screen, searchTerm]);
+  
+
   const navigate = useNavigate();
 
   const handleCardClick = (restaurantName) => {
@@ -145,6 +168,17 @@ export const Restaurants = () => {
     <div className="screen-container">
       {isLoader && <CustomLoader />}
       <h2 className="title">OUR Restaurant</h2>
+
+{/* 🔍 Filters */}
+      
+<div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search by Restaurant Name..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
 
       {/* Filter Bar */}
       <div className="filter-bar">
@@ -196,7 +230,7 @@ export const Restaurants = () => {
         {Array.isArray(filteredScreens) && filteredScreens.length > 0 ? (
           filteredScreens.map((sc) => (
             <div
-              className="screen-card"
+              className="screen-card2"
               key={sc._id}
               onClick={() => handleCardClick(sc.title)}
               style={{ cursor: "pointer" }}

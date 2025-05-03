@@ -40,19 +40,19 @@ export const Rating = () => {
         );
       };
   return (
-    <div className="screen-container">
+    <div className="screen-container1">
     {isLoader == true && <CustomLoader />}
     <h2 className="title">OUR RATING</h2>
-    <div className="screen-grid">
+    <div className="screen-grid1">
       {Array.isArray(screen) && screen.length > 0 ? (
         screen.map((sc) => (
-          <div className="screen-card" key={sc._id}>
+          <div className="screen-card2" key={sc._id}>
             {/* <img
                   src={sc?.imageURL || "https://via.placeholder.com/200"}
                   alt="Screen"
                   className="screen-image"
                 /> */}
-            <div className="screen-details">
+            <div className="screen-details1">
             <div className="info">
                   <strong>Restaurant Name:</strong> {sc.restaurantName || "No Description"}
                 </div>

@@ -198,7 +198,7 @@ export const ViewRestaurent = () => {
           <div className="screen-grid">
             {Array.isArray(filteredScreens) && filteredScreens.length > 0 ? (
               filteredScreens.map((sc) => (
-                <div className="screen-card" key={sc._id}>
+                <div className="screen-card2" key={sc._id}>
                   <img
                     src={sc?.imageURL || "https://via.placeholder.com/200"}
                     alt="Screen"

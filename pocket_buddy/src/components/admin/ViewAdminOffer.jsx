@@ -116,7 +116,7 @@ export const ViewAdminOffer = () => {
       <div className="screen-grid">
         {Array.isArray(filteredScreen) && filteredScreen.length > 0 ? (
           filteredScreen.map((sc) => (
-            <div className="screen-card" key={sc._id}>
+            <div className="screen-card2" key={sc._id}>
               <img
                 src={sc?.imageURL || "https://via.placeholder.com/200"}
                 alt="Screen"

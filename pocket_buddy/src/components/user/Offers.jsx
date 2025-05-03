@@ -119,9 +119,9 @@ export const Offers = () => {
   return (
     <div className="screen-container">
       {isLoader && <CustomLoader />}
-      <h2 className="title">OUR OFFER</h2>
+      <h2 className="title">OFFER for {decodeURIComponent(restaurantName)}</h2>
 
-      <button onClick={() => navigate(-1)} className="back-btn">
+      <button onClick={() => navigate(-1)} className="back-btn1">
         ⬅ Back
       </button>
 

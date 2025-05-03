@@ -122,7 +122,7 @@ export const ViewOffer = () => {
       <div className="screen-grid">
         {Array.isArray(screen) && screen.length > 0 ? (
           screen.map((sc) => (
-            <div className="screen-card1" key={sc._id}>
+            <div className="screen-card2" key={sc._id}>
               <div className="image-container">
                 <img
                   src={sc?.imageURL || "https://via.placeholder.com/200"}

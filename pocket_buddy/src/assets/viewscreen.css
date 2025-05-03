@@ -18,14 +18,14 @@
     justify-content: center;
   }
   
-  .screen-card1 {
+  .screen-card2 {
     background-color: white;
     border-radius: 8px;
     border: 1px solid #441752;
     box-shadow: 0 2px 15px #441752;
     overflow: hidden;
     text-align: left;
-  
+    padding: 10px;
     display: flex;
     flex-direction: column;
     width: 310px;
@@ -46,7 +46,7 @@
   }
   
   .screen-details {
-    padding: 15px;
+    padding: 10px;
   
     flex-grow: 1; /* Pushes content up */
     display: flex;

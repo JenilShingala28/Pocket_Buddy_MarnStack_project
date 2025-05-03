@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { CustomLoader } from "../common/CustomLoader";
-import "../../assets/screencard.css";
+//import "../../assets/screencard.css";
+import "../../assets/viewscreen.css"
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const Offer = () => {
-
+  const { restaurantName } = useParams(); // Get restaurant name from URL
+  const navigate = useNavigate();
 
   const [screen, setScreen] = useState([]);
   const [filteredScreen, setFilteredScreen] = useState([]);
   const [isLoader, setisLoader] = useState(false);
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(""); 
   const [foodType, setFoodType] = useState("");
   const [startDateFilter, setStartDateFilter] = useState("");
   const [endDateFilter, setEndDateFilter] = useState("");
@@ -95,19 +98,34 @@ export const Offer = () => {
         ? new Date(sc.endDate) <= new Date(endDateFilter)
         : true;
 
+        const matchesRestaurant = restaurantName
+        ? sc.restaurantName?.toLowerCase() ===
+          decodeURIComponent(restaurantName).toLowerCase()
+        : true;
+
       return (
-        matchesSearch && matchesFoodType && matchesStartDate && matchesEndDate
+        matchesSearch && matchesFoodType && matchesStartDate && matchesEndDate &&
+        matchesRestaurant
       );
     });
 
     setFilteredScreen(filtered);
-  }, [searchQuery, foodType, startDateFilter, endDateFilter, screen]);
+  }, [searchQuery, foodType, startDateFilter, endDateFilter, screen,
+    restaurantName,]);
+
+    const handleCardClick = (restaurantName) => {
+      navigate(`/user/ratings/${encodeURIComponent(restaurantName)}`);
+    }
 
   return (
 
     <div className="screen-container">
       {isLoader && <CustomLoader />}
       <h2 className="title">OUR OFFER</h2>
+
+      <button onClick={() => navigate(-1)} className="back-btn1">
+        ⬅ Back
+      </button>
 
       {/* 🔍 Filters */}
       
@@ -149,14 +167,19 @@ export const Offer = () => {
       <div className="screen-grid">
         {Array.isArray(filteredScreen) && filteredScreen.length > 0 ? (
           filteredScreen.map((sc) => (
-            <div className="screen-card" key={sc._id}>
+            <div className="screen-card2" key={sc._id}>
               <div className="image-container">
                 <img
                   src={sc?.imageURL || "https://via.placeholder.com/200"}
                   alt="Screen"
                   className="screen-image"
                 />
-                <div className="rating-overlay">
+                <div className="rating-overlay"
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card click propagation
+                  handleCardClick(sc.restaurantName); // Use actual restaurant name
+                }}
+                >
                   {renderStars(Number(getAverageRating(sc.restaurantName)))}
                   <span className="rating-value">
                     ({getAverageRating(sc.restaurantName)})
