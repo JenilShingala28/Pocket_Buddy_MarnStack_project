@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { CustomLoader } from "../common/CustomLoader";
 import axios from "axios";
 import "../../assets/viewscreen.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export const ViewOffer = () => {
+  const navigate = useNavigate();
   const [screen, setScreen] = useState([]);
   const [isLoader, setisLoader] = useState(false);
 
@@ -102,6 +103,10 @@ export const ViewOffer = () => {
     }
   };
 
+  const handleCardClick = (restaurantName) => {
+    navigate(`/owner/ratings/${encodeURIComponent(restaurantName)}`);
+  }
+
   return (
     <div className="screen-container">
       <ToastContainer
@@ -129,7 +134,12 @@ export const ViewOffer = () => {
                   alt="Screen"
                   className="screen-image"
                 />
-                <div className="rating-overlay">
+                <div className="rating-overlay"
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card click propagation
+                  handleCardClick(sc.restaurantName); // Use actual restaurant name
+                }}
+                >
                   {renderStars(Number(getAverageRating(sc.restaurantName)))}
                   <span className="rating-value">
                     ({getAverageRating(sc.restaurantName)})

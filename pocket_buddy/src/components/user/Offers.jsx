@@ -7,7 +7,7 @@ import axios from "axios";
 export const Offers = () => {
   const { restaurantName } = useParams(); // Get restaurant name from URL
   const navigate = useNavigate();
-
+ 
   const [screen, setScreen] = useState([]);
   const [filteredScreen, setFilteredScreen] = useState([]);
   const [isLoader, setisLoader] = useState(false);

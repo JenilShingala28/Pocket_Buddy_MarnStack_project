@@ -56,6 +56,7 @@ import { UserList } from "./components/admin/UserList";
 import { ContectUs } from "./components/common/ContectUs";
 import { Offers } from "./components/user/Offers";
 import { Ratings } from "./components/user/Ratings";
+import { RatingPerU } from "./components/restaurants/RatingPerU";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:3000";
@@ -198,6 +199,8 @@ function App() {
             {/* <Route path="addrating" element={<AddRating />}></Route>  */}
             <Route path="myrating" element={<ViewRating />}></Route>
             {/* <Route path="updaterating/:id" element={<UpdateRating />}></Route> */}
+
+            <Route path="ratings/:restaurantName" element={<RatingPerU />} />
 
             <Route path="contact" element={<ContectUs />}></Route>
           </Route>
