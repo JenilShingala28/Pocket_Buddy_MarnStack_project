@@ -13,7 +13,7 @@ export const Restaurants = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [states, setStates] = useState([]);
-  const [cities, setCities] = useState([]);
+  const [cities, setCities] = useState([]); 
   const [areas, setAreas] = useState([]);
 
   const [selectedState, setSelectedState] = useState("");

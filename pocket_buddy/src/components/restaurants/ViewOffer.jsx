@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { CustomLoader } from "../common/CustomLoader";
 import axios from "axios";
 import "../../assets/viewscreen.css"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export const ViewOffer = () => {
   const navigate = useNavigate();
+  const { restaurantName } = useParams();
+  const [filteredScreen, setFilteredScreen] = useState([]);
   const [screen, setScreen] = useState([]);
   const [isLoader, setisLoader] = useState(false);
 
@@ -102,6 +104,23 @@ export const ViewOffer = () => {
       setisLoader(false); // Stop loader
     }
   };
+
+  // Apply all filters
+    useEffect(() => {
+      const filtered = screen.filter((sc) => {
+          const matchesRestaurant = restaurantName
+          ? sc.restaurantName?.toLowerCase() ===
+            decodeURIComponent(restaurantName).toLowerCase()
+          : true;
+  
+        return (
+          matchesRestaurant
+        );
+      });
+  
+      setFilteredScreen(filtered);
+    }, [ screen,
+      restaurantName,]);
 
   const handleCardClick = (restaurantName) => {
     navigate(`/owner/ratings/${encodeURIComponent(restaurantName)}`);
