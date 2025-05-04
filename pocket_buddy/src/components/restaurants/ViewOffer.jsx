@@ -2,17 +2,24 @@ import React, { useEffect, useState } from "react";
 import { CustomLoader } from "../common/CustomLoader";
 import axios from "axios";
 import "../../assets/viewscreen.css"
+import "../../assets/screencardperticuler.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export const ViewOffer = () => {
-  const navigate = useNavigate();
-  const { restaurantName } = useParams();
-  const [filteredScreen, setFilteredScreen] = useState([]);
-  const [screen, setScreen] = useState([]);
-  const [isLoader, setisLoader] = useState(false);
-
-  const [ratings, setRatings] = useState([]);
+  const { restaurantName } = useParams(); // Get restaurant name from URL
+    const navigate = useNavigate();
+  
+    const [screen, setScreen] = useState([]);
+    const [filteredScreen, setFilteredScreen] = useState([]);
+    const [isLoader, setisLoader] = useState(false);
+  
+    const [searchQuery, setSearchQuery] = useState(""); 
+    const [foodType, setFoodType] = useState("");
+    const [startDateFilter, setStartDateFilter] = useState("");
+    const [endDateFilter, setEndDateFilter] = useState("");
+  
+    const [ratings, setRatings] = useState([]);
 
   const getAllRatings = async () => {
     try {
@@ -105,21 +112,38 @@ export const ViewOffer = () => {
     }
   };
 
-  // Apply all filters
+   // Apply all filters
     useEffect(() => {
       const filtered = screen.filter((sc) => {
+        const matchesSearch = sc.restaurantName
+          ?.toLowerCase()
+          .includes(searchQuery.toLowerCase());
+  
+        const matchesFoodType = foodType
+          ? sc.foodType?.toLowerCase() === foodType.toLowerCase()
+          : true;
+  
+        const matchesStartDate = startDateFilter
+          ? new Date(sc.startDate) >= new Date(startDateFilter)
+          : true;
+  
+        const matchesEndDate = endDateFilter
+          ? new Date(sc.endDate) <= new Date(endDateFilter)
+          : true;
+  
           const matchesRestaurant = restaurantName
           ? sc.restaurantName?.toLowerCase() ===
             decodeURIComponent(restaurantName).toLowerCase()
           : true;
   
         return (
+          matchesSearch && matchesFoodType && matchesStartDate && matchesEndDate &&
           matchesRestaurant
         );
       });
   
       setFilteredScreen(filtered);
-    }, [ screen,
+    }, [searchQuery, foodType, startDateFilter, endDateFilter, screen,
       restaurantName,]);
 
   const handleCardClick = (restaurantName) => {
@@ -143,10 +167,45 @@ export const ViewOffer = () => {
       />
       {isLoader == true && <CustomLoader />}
       <h2 className="title">OUR OFFER</h2>
-      <div className="screen-grid">
-        {Array.isArray(screen) && screen.length > 0 ? (
-          screen.map((sc) => (
-            <div className="screen-card2" key={sc._id}>
+
+      <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search by Restaurant Name..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+
+        <div className="filter-bar">
+        <label>Food Type:</label>
+        <select value={foodType} onChange={(e) => setFoodType(e.target.value)}>
+          <option value="">All Food Types</option>
+          <option value="burger">burger</option>
+          <option value="pizza">pizza</option>
+          <option value="coffee">coffee</option>
+          <option value="pasta">pasta</option>
+          <option value="Dessert">Dessert</option>
+        </select>
+
+        <label>Start Date:</label>
+        <input
+          type="date"
+          value={startDateFilter}
+          onChange={(e) => setStartDateFilter(e.target.value)}
+        />
+        <label>End Date:</label>
+        <input
+          type="date"
+          value={endDateFilter}
+          onChange={(e) => setEndDateFilter(e.target.value)}
+        />
+      </div>
+
+      <div className="offer-grid">
+      {Array.isArray(filteredScreen) && filteredScreen.length > 0 ? (
+          filteredScreen.map((sc) => (
+            <div className="offer-card" key={sc._id}>
               <div className="image-container">
                 <img
                   src={sc?.imageURL || "https://via.placeholder.com/200"}
@@ -191,6 +250,28 @@ export const ViewOffer = () => {
                 <div className="info">
                   <strong>TERMS & CONDITIONS:</strong>{" "}
                   {sc.termsConditions || "N/A"}
+                </div>
+                <div className="info">
+                  <strong>Avg Rating:</strong>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    {renderStars(Number(getAverageRating(sc.restaurantName)))}
+                    <span
+                      style={{
+                        marginLeft: "6px",
+                        marginTop: "5px",
+                        color: "#444",
+                        fontSize: "14px",
+                      }}
+                    >
+                      ({getAverageRating(sc.restaurantName)})
+                    </span>
+                  </div>
                 </div>
                 <Link
                   to={`/owner/updateoffer/${sc._id}`}

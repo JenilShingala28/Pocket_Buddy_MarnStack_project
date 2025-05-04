@@ -350,13 +350,13 @@ const styles = {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
-    gap: "30px",
+    gap: "10px",
   },
   chartBox: {
     width: "420px",
     backgroundColor: " #efb6c8",
-    border: "2px solid #8174a0",
-    padding: "20px",
+    border: "1px solid #8174a0",
+    padding: "10px",
     borderRadius: "12px",
     boxShadow: "0 4px 12px #efb6c8",
    

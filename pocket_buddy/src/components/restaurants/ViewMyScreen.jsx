@@ -1,14 +1,26 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CustomLoader } from "../common/CustomLoader";
-// import "../../assets/screencard.css";
-import "../../assets/viewscreen.css"
+ import "../../assets/screencard.css";
+//import "../../assets/viewscreen.css"
+import "../../assets/screencardperticuler.css";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-
+ 
 export const ViewMyScreen = () => {
   const [screen, setScreen] = useState([]);
-  const [isLoader, setisLoader] = useState(false);
+  const [filteredScreens, setFilteredScreens] = useState([]);
+  const [isLoader, setIsLoader] = useState(false);
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]); 
+  const [areas, setAreas] = useState([]);
+
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedArea, setSelectedArea] = useState("");
 
   const [ratings, setRatings] = useState([]);
 
@@ -21,17 +33,28 @@ export const ViewMyScreen = () => {
     }
   };
 
-  const getAllMyScreen = async () => {
-    console.log(localStorage.getItem("id"));
+  // const getAllMyScreen = async () => {
+  //   console.log(localStorage.getItem("id"));
 
-    setisLoader(true);
-    const res = await axios.get(
-      "/location/getalllocationby/" + localStorage.getItem("id")
-      // "/location/getall"
-    );
-    console.log(res.data);
-    setScreen(res.data.data);
-    setisLoader(false);
+  //   setisLoader(true);
+  //   const res = await axios.get(
+  //     "/location/getalllocationby/" + localStorage.getItem("id")
+  //     // "/location/getall"
+  //   );
+  //   console.log(res.data);
+  //   setScreen(res.data.data);
+  //   setisLoader(false);
+  // };
+  const getAllMyScreen = async () => {
+    setIsLoader(true);
+    try {
+      const res = await axios.get("/location/getalllocationby/" + localStorage.getItem("id"));
+      setScreen(res.data.data);
+      setFilteredScreens(res.data.data);
+    } catch (error) {
+      console.error("Error fetching locations:", error);
+    }
+    setIsLoader(false);
   };
 
   useEffect(() => {
@@ -66,6 +89,32 @@ export const ViewMyScreen = () => {
     }
 
     return <div className="star-rating">{stars}</div>;
+  };
+  const applyFilters = () => {
+    let filtered = [...screen];
+  
+    if (searchTerm.trim()) {
+      filtered = filtered.filter((sc) =>
+        sc.title?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+  
+    setFilteredScreens(filtered);
+  };
+  
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  useEffect(() => {
+    applyFilters();
+  }, [screen, searchTerm]);
+  
+
+  const navigate = useNavigate();
+
+  const handleCardClick = (restaurantName) => {
+    navigate(`/owner/offers/${encodeURIComponent(restaurantName)}`);
   };
 
   const deleteLocation = async (id) => {
@@ -117,10 +166,23 @@ export const ViewMyScreen = () => {
       />
       {isLoader == true && <CustomLoader />}
       <h2 className="title">OUR Restaurant</h2>
-      <div className="screen-grid">
-        {Array.isArray(screen) && screen.length > 0 ? (
-          screen.map((sc) => (
-            <div className="screen-card2" key={sc._id}>
+
+      {/* 🔍 Filters */}
+      
+<div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search by Restaurant Name..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
+      <div className="offer-grid">
+      {Array.isArray(filteredScreens) && filteredScreens.length > 0 ? (
+          filteredScreens.map((sc) => (
+            <div className="offer-card" key={sc._id}onClick={() => handleCardClick(sc.title)}
+            style={{ cursor: "pointer" }}
+            >
               <div className="image-container">
                 <img
                   src={sc?.imageURL || "https://via.placeholder.com/200"}
