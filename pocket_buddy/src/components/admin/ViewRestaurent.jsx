@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import { CustomLoader } from "../common/CustomLoader";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import "../../assets/screencard.css";
+import "../../assets/screencardperticuler.css";
+import { useNavigate } from "react-router-dom";
 
 export const ViewRestaurent = () => {
   
-
+ 
   // const deleteRestaurant = async (id) => {
   //   try {
   //     setisLoader(true);
@@ -44,6 +46,9 @@ export const ViewRestaurent = () => {
   const [filteredScreens, setFilteredScreens] = useState([]);
   const [isLoader, setIsLoader] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [ratings, setRatings] = useState([]);
+
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [areas, setAreas] = useState([]);
@@ -51,6 +56,15 @@ export const ViewRestaurent = () => {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
+
+  const getAllRatings = async () => {
+      try {
+        const res = await axios.get("/rating/getall");
+        setRatings(res.data.data);
+      } catch (error) {
+        console.error("Error fetching ratings:", error);
+      }
+    };
 
   // Fetch all restaurants
   const getAllMyScreen = async () => {
@@ -86,7 +100,37 @@ export const ViewRestaurent = () => {
     getAllStates();
     getAllCities();
     getAllAreas();
+    getAllRatings();
   }, []);
+
+  const getAverageRating = (restaurantName) => {
+    const restaurantRatings = ratings.filter(
+      (rating) => rating.restaurantName === restaurantName
+    );
+    if (restaurantRatings.length === 0) return 0;
+
+    const total = restaurantRatings.reduce((sum, r) => sum + r.rating, 0);
+    return (total / restaurantRatings.length).toFixed(1);
+  };
+
+  const renderStars = (rating) => {
+    const stars = [];
+
+    for (let i = 0; i < 5; i++) {
+      const fill = Math.max(0, Math.min(1, rating - i)) * 100;
+
+      stars.push(
+        <div key={i} className="star-wrapper">
+          <span className="star empty">★</span>
+          <span className="star full" style={{ width: `${fill}%` }}>
+            ★
+          </span>
+        </div>
+      );
+    }
+
+    return <div className="star-rating">{stars}</div>;
+  };
 
   // Handlers
   const handleStateChange = (e) => {
@@ -129,6 +173,32 @@ export const ViewRestaurent = () => {
     setFilteredScreens(filtered);
   };
 
+  const applyFilters = () => {
+      let filtered = [...screen];
+    
+      if (searchTerm.trim()) {
+        filtered = filtered.filter((sc) =>
+          sc.title?.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      }
+    
+      setFilteredScreens(filtered);
+    };
+    
+    const handleSearchChange = (e) => {
+      setSearchTerm(e.target.value);
+    };
+  
+    useEffect(() => {
+      applyFilters();
+    }, [screen, searchTerm]);
+    
+  
+    const navigate = useNavigate();
+  
+    const handleCardClick = (restaurantName) => {
+      navigate(`/admin/offers/${encodeURIComponent(restaurantName)}`);
+    };
 
   return (
    
@@ -150,6 +220,15 @@ export const ViewRestaurent = () => {
           <h2 className="title">OUR Restaurant</h2>
     
           {/* Filter Bar */}
+
+          <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search by Restaurant Name..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
           <div className="filter-bar">
             <label>Select State:</label>
             <select value={selectedState} onChange={handleStateChange}>
@@ -195,15 +274,26 @@ export const ViewRestaurent = () => {
           </div>
     
           {/* Restaurant Cards */}
-          <div className="screen-grid">
+          <div className="offer-grid">
             {Array.isArray(filteredScreens) && filteredScreens.length > 0 ? (
               filteredScreens.map((sc) => (
-                <div className="screen-card2" key={sc._id}>
-                  <img
-                    src={sc?.imageURL || "https://via.placeholder.com/200"}
-                    alt="Screen"
-                    className="screen-image"
-                  />
+                <div className="offer-card" key={sc._id}
+                onClick={() => handleCardClick(sc.title)}
+              style={{ cursor: "pointer" }}
+                >
+                  <div className="image-container">
+                <img
+                  src={sc?.imageURL || "https://via.placeholder.com/200"}
+                  alt="Screen"
+                  className="screen-image"
+                />
+                <div className="rating-overlay">
+                  {renderStars(Number(getAverageRating(sc.title)))}
+                  <span className="rating-value">
+                    ({getAverageRating(sc.title)})
+                  </span>
+                </div>
+              </div>
                   <div className="screen-details">
                     <div className="info">
                       <strong>Restaurant Name:</strong> {sc.title || "N/A"}
@@ -226,6 +316,28 @@ export const ViewRestaurent = () => {
                     <div className="info">
                       <strong>Timing:</strong> {sc.timing || "N/A"}
                     </div>
+                    <div className="info">
+                  <strong>Avg Rating:</strong>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    {renderStars(Number(getAverageRating(sc.title)))}
+                    <span
+                      style={{
+                        marginLeft: "6px",
+                        marginTop: "5px",
+                        color: "#444",
+                        fontSize: "14px",
+                      }}
+                    >
+                      ({getAverageRating(sc.title)})
+                    </span>
+                  </div>
+                </div>
                      {/* <Link
     //             to={`/owner/updatescreen1/${sc._id}`}
     //             className="update-button"

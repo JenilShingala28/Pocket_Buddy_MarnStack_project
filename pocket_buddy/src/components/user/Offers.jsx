@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { CustomLoader } from "../common/CustomLoader";
 import "../../assets/screencardperticuler.css";
 import axios from "axios";
-
+ 
 export const Offers = () => {
   const { restaurantName } = useParams(); // Get restaurant name from URL
   const navigate = useNavigate();

@@ -1,100 +1,91 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { FaRegStar, FaStar } from 'react-icons/fa';
-import { CustomLoader } from '../common/CustomLoader';
-import { Bounce, ToastContainer } from 'react-toastify';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { FaRegStar, FaStar } from "react-icons/fa";
+import { CustomLoader } from "../common/CustomLoader";
+import { Bounce, ToastContainer } from "react-toastify";
 import "../../assets/screencard.css";
+import { useNavigate, useParams } from "react-router-dom";
 
-export const ViewAllRating = () => {
-    const [screen, setScreen] = useState([]);
-      const [isLoader, setisLoader] = useState(false);
-    
-      const getAllRatingMyScreen = async () => {
-        console.log(localStorage.getItem("id"));
-    
-        setisLoader(true);
-        const res = await axios.get(
-          // "/rating/byperuser/" + localStorage.getItem("id")
-          "/rating/getall"
-        );
-        console.log(res.data);
-        setScreen(res.data.data);
-        setisLoader(false);
-      };
-    
-      useEffect(() => {
-        getAllRatingMyScreen();
-      }, []);
-    
-      const renderStars = (rating) => {
-        const maxStars = 5;
-        return (
-          <div className="stars">
-            {[...Array(maxStars)].map((_, index) =>
-              index < rating ? (
-                <FaStar key={index} className="filled" />
-              ) : (
-                <FaRegStar key={index} className="empty" />
-              )
-            )}
-          </div>
-        );
-      };
+export const ViewARating = () => {
+  const [screen, setScreen] = useState([]);
+  const [isLoader, setisLoader] = useState(false);
+  //const [searchTerm, setSearchTerm] = useState("");
+  const { restaurantName } = useParams(); // <-- Get restaurant name from URL
+  const navigate = useNavigate();
+
+  const getAllRatingMyScreen = async () => {
+    setisLoader(true);
+    const res = await axios.get("/rating/getall");
+    setScreen(res.data.data);
+    setisLoader(false);
+  };
+
+  useEffect(() => {
+    getAllRatingMyScreen();
+  }, []);
+
+  const renderStars = (rating) => {
+    const maxStars = 5;
+    return (
+      <div className="stars">
+        {[...Array(maxStars)].map((_, index) =>
+          index < rating ? (
+            <FaStar key={index} className="filled" />
+          ) : (
+            <FaRegStar key={index} className="empty" />
+          )
+        )}
+      </div>
+    );
+  };
+
+  // Filter ratings based on searchTerm
+  // const filteredRatings = screen.filter((sc) =>
+  //   sc.restaurantName?.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+
+  const filteredRatings = screen.filter(
+    (sc) =>
+      sc.restaurantName?.toLowerCase() ===
+      decodeURIComponent(restaurantName).toLowerCase()
+  );
+
   return (
-    <div className="screen-container">
-      <ToastContainer
-        position="top-left"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        transition={Bounce}
-      />
-      {isLoader == true && <CustomLoader />}
-      <h2 className="title">OUR RATING</h2>
-      <div className="screen-grid">
-        {Array.isArray(screen) && screen.length > 0 ? (
-          screen.map((sc) => (
-            <div className="screen-card" key={sc._id}>
-              {/* <img
-                    src={sc?.imageURL || "https://via.placeholder.com/200"}
-                    alt="Screen"
-                    className="screen-image"
-                  /> */}
-              <div className="screen-details">
-                <div className="info">
+    <div className="ratings-container">
+      {isLoader && <CustomLoader />}
+
+      <div className="header">
+        <h2 className="page-title">
+          Ratings for {decodeURIComponent(restaurantName)}
+        </h2>
+        <button onClick={() => navigate(-1)} className="back-btn2">
+          ⬅ Back
+        </button>
+      </div>
+
+      <div className="ratings-list">
+        {filteredRatings.length > 0 ? (
+          filteredRatings.map((sc) => (
+            <div className="rating-card" key={sc._id}>
+              <div className="rating-info">
+                <p>
+                  <strong>Restaurant:</strong>{" "}
+                  {sc.restaurantName || "No Description"}
+                </p>
+                <p>
                   <strong>Comments:</strong> {sc.comments || "No Description"}
-                </div>
-                <div className="info">
+                </p>
+                <p>
                   <strong>Rating:</strong> {sc.rating || "No Description"}
-                </div>
-                <div className="info">{renderStars(sc.rating || 0)}</div>
-                {/* <Link
-                  to={`/admin/updaterating/${sc._id}`}
-                  className="update-button"
-                >
-                  Update
-                </Link>
-                <button
-                  onClick={() => {
-                    deleteOffer(sc._id);
-                  }}
-                  className="update-button"
-                >
-                  DELETE
-                </button> */}
+                </p>
+                <div className="stars">{renderStars(sc.rating || 0)}</div>
               </div>
             </div>
           ))
         ) : (
-          <p className="no-data">No screens available</p>
+          <p className="no-data">No ratings available</p>
         )}
       </div>
     </div>
-  )
-}
+  );
+};

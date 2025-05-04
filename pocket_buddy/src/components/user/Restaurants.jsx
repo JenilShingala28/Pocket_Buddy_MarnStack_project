@@ -4,7 +4,7 @@ import "../../assets/screencard.css";
 import "../../assets/screencardperticuler.css";
 import { CustomLoader } from "../common/CustomLoader";
 import { useNavigate } from "react-router-dom";
-
+ 
 export const Restaurants = () => {
   const [screen, setScreen] = useState([]);
   const [filteredScreens, setFilteredScreens] = useState([]);

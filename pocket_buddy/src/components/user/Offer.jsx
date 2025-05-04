@@ -5,7 +5,7 @@ import "../../assets/viewscreen.css"
 import "../../assets/screencardperticuler.css";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
+ 
 export const Offer = () => {
   const { restaurantName } = useParams(); // Get restaurant name from URL
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import "../../assets/screencard.css";
 import axios from "axios";
 import { CustomLoader } from "../common/CustomLoader";
 import { useNavigate, useParams } from "react-router-dom";
-
+ 
 export const Ratings = () => {
   const [screen, setScreen] = useState([]);
   const [isLoader, setisLoader] = useState(false);

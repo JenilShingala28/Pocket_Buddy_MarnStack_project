@@ -2,9 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CustomLoader } from "../common/CustomLoader";
 import { Bounce, ToastContainer } from "react-toastify";
-import "../../assets/screencard.css";
+// import "../../assets/screencard.css";
+import "../../assets/viewscreen.css"
+import "../../assets/screencardperticuler.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const ViewAdminOffer = () => {
+  const { restaurantName } = useParams(); // Get restaurant name from URL
+  const navigate = useNavigate();
+
   const [screen, setScreen] = useState([]);
   const [isLoader, setisLoader] = useState(false);
 
@@ -13,6 +19,18 @@ export const ViewAdminOffer = () => {
   const [foodType, setFoodType] = useState("");
   const [startDateFilter, setStartDateFilter] = useState("");
   const [endDateFilter, setEndDateFilter] = useState("");
+
+  const [ratings, setRatings] = useState([]);
+
+  // Fetch all ratings
+  const getAllRatings = async () => {
+    try {
+      const res = await axios.get("/rating/getall"); // Assuming there's an endpoint to fetch ratings
+      setRatings(res.data.data);
+    } catch (error) {
+      console.error("Error fetching ratings:", error);
+    }
+  };
 
   const getAllOfferMyScreen = async () => {
     console.log(localStorage.getItem("id"));
@@ -29,7 +47,40 @@ export const ViewAdminOffer = () => {
 
   useEffect(() => {
     getAllOfferMyScreen();
+    getAllRatings();
   }, []);
+
+  // Function to calculate the average rating for an offer
+
+  const getAverageRating = (restaurantName) => {
+    const restaurantRatings = ratings.filter(
+      (rating) => rating.restaurantName === restaurantName
+    );
+
+    if (restaurantRatings.length === 0) return 0;
+
+    const total = restaurantRatings.reduce((sum, r) => sum + r.rating, 0);
+    return (total / restaurantRatings.length).toFixed(1);
+  };
+
+  const renderStars = (rating) => {
+    const stars = [];
+
+    for (let i = 0; i < 5; i++) {
+      const fill = Math.max(0, Math.min(1, rating - i)) * 100;
+
+      stars.push(
+        <div key={i} className="star-wrapper">
+          <span className="star empty">★</span>
+          <span className="star full" style={{ width: `${fill}%` }}>
+            ★
+          </span>
+        </div>
+      );
+    }
+
+    return <div className="star-rating">{stars}</div>;
+  };
 
   // Apply all filters
   useEffect(() => {
@@ -50,13 +101,22 @@ export const ViewAdminOffer = () => {
         ? new Date(sc.endDate) <= new Date(endDateFilter)
         : true;
 
+        const matchesRestaurant = restaurantName
+        ? sc.restaurantName?.toLowerCase() ===
+          decodeURIComponent(restaurantName).toLowerCase()
+        : true;
+        
       return (
-        matchesSearch && matchesFoodType && matchesStartDate && matchesEndDate
+        matchesSearch && matchesFoodType && matchesStartDate && matchesEndDate && matchesRestaurant
       );
     });
 
     setFilteredScreen(filtered);
-  }, [searchQuery, foodType, startDateFilter, endDateFilter, screen]);
+  }, [searchQuery, foodType, startDateFilter, endDateFilter, screen, restaurantName]);
+
+  const handleCardClick = (restaurantName) => {
+    navigate(`/admin/ratings/${encodeURIComponent(restaurantName)}`);
+  }
 
   return (
     <div className="screen-container">
@@ -113,15 +173,28 @@ export const ViewAdminOffer = () => {
       </div>
 
       {/* 📦 Offer Cards */}
-      <div className="screen-grid">
+      <div className="offer-grid">
         {Array.isArray(filteredScreen) && filteredScreen.length > 0 ? (
           filteredScreen.map((sc) => (
-            <div className="screen-card2" key={sc._id}>
-              <img
-                src={sc?.imageURL || "https://via.placeholder.com/200"}
-                alt="Screen"
-                className="screen-image"
-              />
+            <div className="offer-card" key={sc._id}>
+              <div className="image-container">
+                <img
+                  src={sc?.imageURL || "https://via.placeholder.com/200"}
+                  alt="Screen"
+                  className="screen-image"
+                />
+                <div className="rating-overlay"
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card click propagation
+                  handleCardClick(sc.restaurantName); // Use actual restaurant name
+                }}
+                >
+                  {renderStars(Number(getAverageRating(sc.restaurantName)))}
+                  <span className="rating-value">
+                    ({getAverageRating(sc.restaurantName)})
+                  </span>
+                </div>
+              </div>
               <div className="screen-details">
                 <div className="info">
                   <strong>Restaurant Name:</strong> {sc.restaurantName || "N/A"}
@@ -145,9 +218,31 @@ export const ViewAdminOffer = () => {
                   <strong>Food Type:</strong> {sc.foodType || "N/A"}
                 </div>
                 <div className="info">
+                  <strong>Avg Rating:</strong>
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    {renderStars(Number(getAverageRating(sc.restaurantName)))}
+                    <span
+                      style={{
+                        marginLeft: "6px",
+                        marginTop: "5px",
+                        color: "#444",
+                        fontSize: "14px",
+                      }}
+                    >
+                      ({getAverageRating(sc.restaurantName)})
+                    </span>
+                  </div>
+                </div>
+                {/* <div className="info">
                   <strong>Terms & Conditions:</strong>{" "}
                   {sc.termsConditions || "N/A"}
-                </div>
+                </div> */}
                 {/* <Link
                   to={`/owner/updateoffer/${sc._id}`}
                   className="update-button"
