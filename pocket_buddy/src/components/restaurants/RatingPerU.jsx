@@ -4,7 +4,7 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import "../../assets/screencard.css";
 import axios from "axios";
 import { CustomLoader } from "../common/CustomLoader";
-
+ 
 export const RatingPerU = () => {
     const [screen, setScreen] = useState([]);
     const [isLoader, setisLoader] = useState(false);
