@@ -59,14 +59,22 @@ export const UpdateMyScreen = () => {
       }
     }
 
-    // Check if an image is selected
-    if (data.image[0]) {
-      formData.append("image", data.image[0]);
-      console.log("Selected image:", data.image[0]);
+    // Check if an image is selected {one img}
+    // if (data.image[0]) {
+    //   formData.append("image", data.image[0]);
+    //   console.log("Selected image:", data.image[0]);
+    // }
+
+    // Check if an image is selected {multiple img}
+    if (data.image && data.image.length > 0) {
+      for (let i = 0; i < data.image.length; i++) {
+        formData.append("images", data.image[i]); // use "images" to match backend
+      }
     }
+    
 
     try {
-      const res = await axios.put("/location/updateby1/" + id, formData, {
+      const res = await axios.put("/location/updateby2/" + id, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -259,7 +267,7 @@ export const UpdateMyScreen = () => {
         </div>
         <div className="form-group">
           <label>Add Image</label>
-          <input type="file" {...register("image")}></input>
+          <input type="file" multiple {...register("image")}></input>
         </div>
         <div>
           <input type="submit" className="submit-button"></input>

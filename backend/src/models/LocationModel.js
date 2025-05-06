@@ -58,8 +58,8 @@ const locationSchema = new Schema ({
         required: true,
     },
     imageURL:{
-        type:String
-        
+        //type:String
+        type: [String],
     },
     userId:{
         type: Schema.Types.ObjectId,

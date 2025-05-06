@@ -57,8 +57,12 @@ export const AddLocation2 = () => {
     formData.append("foodType", data.foodType);
     formData.append("latitude", data.latitude);
     formData.append("longitude", data.longitude);
-    formData.append("image", data.image[0]);
+    //formData.append("image", data.image[0]);
     formData.append("userId", data.userId);
+
+    for (let i = 0; i < data.image.length; i++) {
+      formData.append("images", data.image[i]); // note plural "images"
+    }
 
     const res = await axios.post("/location/addfile", formData);
     console.log(res.data);
@@ -244,7 +248,7 @@ export const AddLocation2 = () => {
         </div>
         <div className="form-group">
           <label>Add Image</label>
-          <input type="file" {...register("image")}></input>
+          <input type="file" multiple {...register("image")}></input>
         </div>
         <div>
           <input type="submit" className="submit-button"></input>

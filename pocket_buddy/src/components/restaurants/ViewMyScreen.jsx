@@ -119,7 +119,7 @@ export const ViewMyScreen = () => {
 
   const deleteLocation = async (id) => {
     try {
-      setisLoader(true);
+      setIsLoader(true);
 
       const res = await axios.delete("/location/delete/" + id);
       console.log(res);
@@ -145,9 +145,65 @@ export const ViewMyScreen = () => {
         autoClose: 5000,
       });
     } finally {
-      setisLoader(false); // Stop loader
+      setIsLoader(false); // Stop loader
     }
   };
+
+  const ImageCarousel = ({ sc, getAverageRating, renderStars }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const images = Array.isArray(sc?.imageURL) ? sc.imageURL : [];
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000);
+      return () => clearInterval(interval);
+    }, [images.length]);
+
+    const handleThumbnailClick = (index) => {
+      setCurrentIndex(index);
+    };
+
+    return (
+      <div className="carousel-container">
+        <div className="main-image-wrapper">
+          <div className="rating-overlay">
+            {renderStars(Number(getAverageRating(sc.title)))}
+            <span className="rating-value">
+              ({getAverageRating(sc.title)})
+            </span>
+          </div>
+          {images.length > 0 ? (
+            <img
+              src={images[currentIndex]}
+              alt={`Image ${currentIndex}`}
+              className="main-image"
+            />
+          ) : (
+            <img
+              src="https://via.placeholder.com/200"
+              alt="No Image"
+              className="main-image"
+            />
+          )}
+        </div>
+        <div className="thumbnail-wrapper">
+          {images.map((url, index) => (
+            <img
+              key={index}
+              src={url}
+              alt={`Thumbnail ${index}`}
+              className={`thumbnail ${index === currentIndex ? "active" : ""}`}
+              onClick={() => handleThumbnailClick(index)}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  };
+
 
   return (
     <div className="screen-container">
@@ -169,7 +225,7 @@ export const ViewMyScreen = () => {
 
       {/* 🔍 Filters */}
       
-<div className="search-bar">
+        <div className="search-bar">
           <input
             type="text"
             placeholder="Search by Restaurant Name..."
@@ -180,22 +236,13 @@ export const ViewMyScreen = () => {
       <div className="offer-grid">
       {Array.isArray(filteredScreens) && filteredScreens.length > 0 ? (
           filteredScreens.map((sc) => (
-            <div className="offer-card" key={sc._id}onClick={() => handleCardClick(sc.title)}
-            style={{ cursor: "pointer" }}
+            <div className="offer-card" key={sc._id}
             >
-              <div className="image-container">
-                <img
-                  src={sc?.imageURL || "https://via.placeholder.com/200"}
-                  alt="Screen"
-                  className="screen-image"
-                />
-                <div className="rating-overlay">
-                  {renderStars(Number(getAverageRating(sc.title)))}
-                  <span className="rating-value">
-                    ({getAverageRating(sc.title)})
-                  </span>
-                </div>
-              </div>
+               <ImageCarousel
+                sc={sc}
+                getAverageRating={getAverageRating}
+                renderStars={renderStars}
+              />
               <div className="screen-details">
                 <div className="info">
                   <strong>Restaurant Name:</strong>{" "}
@@ -256,6 +303,14 @@ export const ViewMyScreen = () => {
                 >
                   DELETE
                 </button>
+                <button
+                  onClick={() => handleCardClick(sc.title)}
+                  style={{ cursor: "pointer" }}
+                  className="update-button"
+                >
+                  View Offer
+                </button>
+                
               </div>
             </div>
           ))

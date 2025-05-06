@@ -186,7 +186,7 @@
 .rating-overlay {
   position: absolute;
   bottom: 8px;
-  right: 8px;
+  left: 8px;
   background-color: rgba(0, 0, 0, 0.6);
   color: #f5c518;
   padding: 4px 8px;
