@@ -8,7 +8,7 @@ const cloudinaryUtil = require("../utils/CloudinaryUtil");
 
 const mailUtil = require("../utils/MailUtil");
 const jwt = require("jsonwebtoken");
-const secret = "secrete";
+const secret = "secret";
 
 //storage
 const storage = multer.diskStorage({
@@ -105,6 +105,19 @@ const ulogin = async (req, res) => {
 
 const signup = async (req, res) => {
   try {
+
+      // Check if a user already exists with the same email or contact
+      const existingUser = await UserModel.findOne({
+        email: req.body.email 
+      });
+  
+      if (existingUser) {
+        return res.status(400).json({
+          statusCode: 400,
+          message: "User with this email already exists.",
+        });
+      }
+
     const salt = bcrypt.genSaltSync(10);
     console.log("🚀 ~ signup ~ salt:", salt);
     const hashedpassword = bcrypt.hashSync(req.body.password, salt);
@@ -118,11 +131,12 @@ const signup = async (req, res) => {
       "welcome to pocket buddy app",
       "welcome to our restaurants "
     );
-
+     // Return success
+     const { password, ...userWithoutPassword } = createUser._doc;
     res.status(201).json({
       statusCode: 201,
-      message: "user created.",
-      data: createUser,
+      message: "User created successfully.",
+      data: userWithoutPassword,
     });
   } catch (err) {
     console.log("Getting error while user signup :", err);
@@ -335,7 +349,9 @@ const updateUserProfileById = async (req, res) => {
       // Check if an image is uploaded
       if (req.file) {
         // If a new image is uploaded, upload it to Cloudinary
-        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(req.file);
+        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(
+          req.file
+        );
         console.log("Cloudinary Response:", cloudinaryResponse);
 
         // Store the image URL in the request body
@@ -402,7 +418,9 @@ const updateOwnerProfileById = async (req, res) => {
       // Check if an image is uploaded
       if (req.file) {
         // If a new image is uploaded, upload it to Cloudinary
-        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(req.file);
+        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(
+          req.file
+        );
         console.log("Cloudinary Response:", cloudinaryResponse);
 
         // Store the image URL in the request body
@@ -448,7 +466,9 @@ const updateAdminProfileById = async (req, res) => {
       // Check if an image is uploaded
       if (req.file) {
         // If a new image is uploaded, upload it to Cloudinary
-        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(req.file);
+        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(
+          req.file
+        );
         console.log("Cloudinary Response:", cloudinaryResponse);
 
         // Store the image URL in the request body
@@ -542,6 +562,48 @@ const deleteUserById = async (req, res) => {
     });
   }
 };
+
+const loginUserWithToken = async (req, res) => {
+  const { email, password } = req.body;
+
+  const foundUserFromEmail = await UserModel.findOne({ email: email }).populate("roleId");
+
+  if (foundUserFromEmail) {
+    const isMatch = bcrypt.compareSync(password, foundUserFromEmail.password);
+
+    if (isMatch) {
+      //token...
+      //all object to convert token 
+      //const token = jwt.sign(foundUserFromEmail.toObject(), secret);
+      
+      //only id and email to convert token
+      const token = jwt.sign({ id: foundUserFromEmail._id, 
+        email: foundUserFromEmail.email,
+        roleId: foundUserFromEmail.roleId }, secret)
+
+      //const token = jwt.sign({id:foundUserFromEmail._id},secret)
+
+      res.status(200).json({
+        message: "user loggedin..",
+
+        token: token,
+        data: {
+          _id: foundUserFromEmail._id,
+          email: foundUserFromEmail.email,
+          roleId: foundUserFromEmail.roleId,  // this includes the `.name` if populated
+        },
+      });
+    } else {
+      res.status(420).json({
+        message: "invalid cred...",
+      });
+    }
+  } else {
+    res.status(404).json({
+      message: "user not found..",
+    });
+  }
+};
 module.exports = {
   getUser,
   deleteUser,
@@ -561,5 +623,5 @@ module.exports = {
   forgetPassword,
   resetpassword,
 
-  // loginuserWithToken
+  loginUserWithToken,
 };

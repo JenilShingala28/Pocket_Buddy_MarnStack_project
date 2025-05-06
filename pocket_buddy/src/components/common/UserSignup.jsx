@@ -59,8 +59,9 @@ export const UserSignup = () => {
         setTimeout(() => {
           navigate("/login");
         }, 1500);
-      } else {
-        toast.error("Already Signup!", {
+      } else if (res.status === 400) {
+        // Show the error message from backend
+        toast.error(res.data.message || "User Already Signup!", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -77,7 +78,7 @@ export const UserSignup = () => {
       //   //login..
       // }
     } catch (error) {
-      toast.error("Something went wrong!", {
+      toast.error(error.response?.data?.message || "Something went wrong!", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,

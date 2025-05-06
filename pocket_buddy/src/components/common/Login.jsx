@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { Bounce, toast, ToastContainer } from "react-toastify";
@@ -20,7 +20,7 @@ export const Login = () => {
     try {
       const res = await axios.post("/ulogin", data);
       console.log(res.data);
-      if (res.status === 200) {
+      if (res.status === 200 && res.data && res.data.token) {
         toast.success("User login successfully !!", {
           position: "top-center",
           autoClose: 1000,
@@ -35,7 +35,8 @@ export const Login = () => {
         //alert("Login Success")
         // console.log(res.data.data._id)
         // console.log(res.data.data.roleId.name)
-
+        
+        localStorage.setItem("token", res.data.token);   
         localStorage.setItem("id", res.data.data._id);
         localStorage.setItem("role", res.data.data.roleId.name);
 
@@ -79,7 +80,22 @@ export const Login = () => {
     }
   };
 
-  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios.get("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(res => {
+        console.log("Users:", res.data);
+      })
+      .catch(err => {
+        console.error("Error fetching users:", err);
+      });
+    }
+  }, []);
   
   const ValidationSchema = {
     emailvalidator: {

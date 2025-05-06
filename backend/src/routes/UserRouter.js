@@ -3,19 +3,19 @@ const routes = require("express").Router();
 const userController = require("../controllers/UserController");
 const UserModel = require("../models/UserModel");
 
-// const authMiddleware = require("../middleware/AuthMiddleware")
+ const authMiddleware = require("../middleware/AuthMiddleware")
 
-// routes.get("/users", authMiddleware.authMiddleware,userController.getUser);
-// routes.post("/ulogin", userController.loginuserWithToken);
+routes.get("/users", authMiddleware.authMiddleware,userController.getUser);
+routes.post("/ulogin", userController.loginUserWithToken);
 
-routes.get("/users", userController.getUser);
+//routes.get("/users", userController.getUser);
 routes.delete("/delete/:id", userController.deleteUserById);
 routes.post("/user", userController.postUser1);
 routes.post("/signup", userController.signup);
 routes.post("/osignup", userController.osignup);
 
 
-routes.post("/ulogin", userController.ulogin);
+//routes.post("/ulogin", userController.ulogin);
 
 
 
