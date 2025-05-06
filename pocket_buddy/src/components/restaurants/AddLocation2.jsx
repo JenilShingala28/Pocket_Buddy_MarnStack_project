@@ -64,7 +64,7 @@ export const AddLocation2 = () => {
       formData.append("images", data.image[i]); // note plural "images"
     }
 
-    const res = await axios.post("/location/addfile", formData);
+    const res = await axios.post("/location/addfile1", formData);
     console.log(res.data);
 
     navigate("/owner/myresto");

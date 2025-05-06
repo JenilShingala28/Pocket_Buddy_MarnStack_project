@@ -7,8 +7,8 @@ routes.delete("/delete/:id", locationController.deleteLocationById);
 
 routes.get("/getperlocby/:id", locationController.getLocationById);
 
-// routes.post("/addfile", locationController.addWithFile);
-routes.post("/addfile", locationController.addWithMultipleFiles);
+routes.post("/addfile", locationController.addWithFile);
+routes.post("/addfile1", locationController.addWithMultipleFiles);
 routes.get(
   "/getalllocationby/:userId",
   locationController.getAllLocationByUserId
