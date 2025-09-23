@@ -35,7 +35,6 @@ import { ForgetPassword } from "./components/common/ForgetPassword";
 import { Home } from "./components/common/Home";
 import { AdminSidebar } from "./components/layouts/AdminSidebar";
 import { ViewAdminPro } from "./components/admin/ViewAdminPro";
-import { UpdateAdPro } from "./components/admin/updateAdPro";
 import { Offer } from "./components/user/Offer";
 import { Restaurants } from "./components/user/Restaurants";
 import { Rating } from "./components/user/Rating";
@@ -60,6 +59,7 @@ import { RatingPerU } from "./components/restaurants/RatingPerU";
 import { ViewAOffer } from "./components/admin/ViewAOffer";
 import { ViewARating } from "./components/admin/ViewARating";
 import { OfferPerResto } from "./components/restaurants/OfferPerResto";
+import { UpdateAdPro } from "./components/admin/UpdateAdPro";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:3000";
@@ -83,8 +83,7 @@ function App() {
       location.pathname === "/signup" ||
       location.pathname === "/forgetpassword" ||
       location.pathname === "/resetpassword/:token" ||
-      location.pathname === "/osignup" 
-      
+      location.pathname === "/osignup"
     ) {
       document.body.className = ""; // Remove the unwanted class for login and signup
     } else {
@@ -110,9 +109,7 @@ function App() {
         location.pathname === "/signup" ||
         location.pathname === "/forgetpassword" ||
         location.pathname === "/resetpassword/:token" ||
-        location.pathname === "/osignup" 
-        
-
+        location.pathname === "/osignup"
           ? ""
           : "app-wrapper"
       }
@@ -162,17 +159,15 @@ function App() {
             <Route path="allrating" element={<ViewAllRating />}></Route>
 
             <Route path="contact" element={<ContectUs />}></Route>
-
           </Route>
 
           <Route path="/admin" element={<AdminSidebar />}>
             <Route path="" element={<DashBord />}></Route>
 
-            
-            <Route path="myresto" element={<ViewRestaurent />}></Route>          
-            
+            <Route path="myresto" element={<ViewRestaurent />}></Route>
+
             <Route path="myoffer" element={<ViewAdminOffer />}></Route>
-          
+
             <Route path="allrating" element={<ViewAdminRating />}></Route>
 
             <Route path="ratings/:restaurantName" element={<ViewARating />} />
