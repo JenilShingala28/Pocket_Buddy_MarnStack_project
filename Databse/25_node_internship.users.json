@@ -1,0 +1,280 @@
+[{
+  "_id": {
+    "$oid": "67c5707a366165868fc274ad"
+  },
+  "firstName": "ronak",
+  "lastName": "dave",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fa245c6c957fcd10125"
+  },
+  "password": "$2b$10$RIrd8YDmuHJM9R7C2fzYgOgg0jIlD8CJPm4mTC04Hb3h.StONYcF6",
+  "email": "ronak@gmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c571d5366165868fc274b1"
+  },
+  "firstName": "bhautik",
+  "lastName": "khunt",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fa245c6c957fcd10125"
+  },
+  "password": "$2b$10$tu/uXbX144NYH5N5lpCgneHgh7ZbxJqF7neSvOYZjsb8A0fw6A4wm",
+  "email": "bhautik@gmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c572b4366165868fc274b5"
+  },
+  "firstName": "keyur",
+  "lastName": "rakholiya",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fa245c6c957fcd10125"
+  },
+  "password": "$2b$10$koiURCFLBOJBveMz734d5OcKAeWGY1bW/OLwkHvC6dHiAPXfZ6V8m",
+  "email": "keyur@gmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "firstName": "badal",
+  "lastName": "patel",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fe145c6c957fcd10129"
+  },
+  "password": "$2b$10$MyHtm2RUwzEPngMDzQJbNO0lVTnbovO3eQdVvOPn1BnIk.aU7xwCm",
+  "email": "badal@yopmail.com",
+  "confirmPassword": "badal12",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d532e6959deb9eaddd2d60"
+  },
+  "firstName": "hardik",
+  "lastName": "shingala",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fa245c6c957fcd10125"
+  },
+  "password": "$2b$10$3naICWRpG7JNefFPY/uak.uMiuG8hg.PE0XeivEOKfAWI.Wr9CJkq",
+  "email": "hardik@gmail.com",
+  "confirmPassword": "$2b$10$3naICWRpG7JNefFPY/uak.uMiuG8hg.PE0XeivEOKfAWI.Wr9CJkq",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "firstName": "chirag",
+  "lastName": "bharada",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fe145c6c957fcd10129"
+  },
+  "password": "$2b$10$fBMRNX.U.9kHSteKsbKP/.rDZ2Er28401xf7P2oMmQZ4e9/pHoDCy",
+  "plainPassword": "chirag123",
+  "email": "chirag@yopmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ea0d1edba37c025896fa33"
+  },
+  "firstName": "badal",
+  "lastName": "patel",
+  "status": true,
+  "email": "badal@yopmail.com",
+  "contact": "9847282921",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743392029/w0nai7sxuf4iihlhc8li.jpg",
+  "address": "12,shree heights, Iskon cross road",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ea8a1bcb44eae418244a0b"
+  },
+  "firstName": "jenil",
+  "lastName": "shingala",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fce45c6c957fcd10127"
+  },
+  "password": "$2b$10$tlYPTK995BdEHPa1X99jb.jX45MlUgtVhVW2xsXddyxkCNt3mA9rq",
+  "email": "jenil@gmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ea8a8dcb44eae418244a13"
+  },
+  "firstName": "jenil",
+  "lastName": "shingala",
+  "status": true,
+  "email": "jenil@gmail.com",
+  "contact": "9409738336",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743424141/raagfxxralp5cyuxaivn.jpg",
+  "address": "53/Shubham Ro-house , kholvad",
+  "userId": {
+    "$oid": "67ea8a1bcb44eae418244a0b"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ed2e2c4ec792206616a1bb"
+  },
+  "firstName": "jay",
+  "lastName": "devani",
+  "status": true,
+  "password": "$2b$10$cTwkZhw2HKLdcv0HUsepTecFPEjkU79/6M6h1.t3SNLL.bfKc8VXy",
+  "email": "jay@yopmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ee0af977fa8004b3f4ebe8"
+  },
+  "firstName": "ridham",
+  "lastName": "kanani",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fe145c6c957fcd10129"
+  },
+  "password": "$2b$10$sOyridpflVGV4Mkq./j5feuOq32Rvr3DsFbqCqz7kuUf9/.WPztHC",
+  "email": "ridham@yopmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ee70a5787e77cc78a42ac2"
+  },
+  "firstName": "chirag",
+  "lastName": "patel",
+  "status": true,
+  "email": "chirag@yopmail.com",
+  "contact": "9924901818",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743679654/scytcyiyxz14c35o7me9.png",
+  "address": "science city ",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ee71ce787e77cc78a42b42"
+  },
+  "firstName": "bhautik",
+  "lastName": "khunt",
+  "status": true,
+  "email": "bhautik@gmail.com",
+  "contact": "9924901818",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743679951/nsuovunmasbemh8u8hmx.png",
+  "address": "A-7,Shaival apartment ,Nehru-park circle, Vastrapur Lake",
+  "userId": {
+    "$oid": "67c571d5366165868fc274b1"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ee720e787e77cc78a42b4e"
+  },
+  "firstName": "ronak",
+  "lastName": "dave",
+  "status": true,
+  "email": "ronak@gmail.com",
+  "contact": "9924901818",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743680014/jrmxvycq7ajhnw6teu8i.png",
+  "address": "A-7,Shaival apartment ,Nehru-park circle",
+  "userId": {
+    "$oid": "67c5707a366165868fc274ad"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ee728d787e77cc78a42b56"
+  },
+  "firstName": "keyur",
+  "lastName": "rakholiya",
+  "status": true,
+  "email": "keyur@gmail.com",
+  "contact": "9909922334",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743680142/ao7yzdcck9too7cnhguj.png",
+  "address": "11, Surbhi apparent , Nikol",
+  "userId": {
+    "$oid": "67c572b4366165868fc274b5"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f141ae72325eb24caec243"
+  },
+  "firstName": "fenil",
+  "lastName": "laheri",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fa245c6c957fcd10125"
+  },
+  "password": "$2b$10$X5BxnpWwIEHwWzH8ZrNOaeFch3em2VgfG2eT/Q571DC7kFdaHiZw.",
+  "email": "fenil0208@gmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f61c2c8a7969bc5db20148"
+  },
+  "firstName": "fenil",
+  "lastName": "laheri",
+  "status": true,
+  "email": "fenil0208@gmail.com",
+  "contact": "9909922334",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1744182316/eoslnzppmpudekljul0g.png",
+  "address": "11,Shaival apartment ,Nehru-park circle",
+  "userId": {
+    "$oid": "67f141ae72325eb24caec243"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67fe13f74837c5e74e2c4030"
+  },
+  "firstName": "test",
+  "lastName": "test",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fa245c6c957fcd10125"
+  },
+  "password": "$2b$10$8GK9AYS2aYXSaIHYjcMTIujgan.ehGXV4BF1lmkjSjKwDXVsxlPH2",
+  "email": "test@yopmail.com",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "681329ed43ad8d5bad70513a"
+  },
+  "firstName": "keval",
+  "lastName": "kachadiya",
+  "status": true,
+  "roleId": {
+    "$oid": "67c55fa245c6c957fcd10125"
+  },
+  "password": "$2b$10$LxwxnxjwkM3UkZlQiTjzcu6EfUTjrIxx1KErUtPUxedtzJedkq1HG",
+  "email": "keval@yopmail.com",
+  "__v": 0
+}]

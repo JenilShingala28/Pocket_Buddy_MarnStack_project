@@ -1,0 +1,435 @@
+[{
+  "_id": {
+    "$oid": "67da498f54c31e768c37799d"
+  },
+  "title": "The Spice House 111",
+  "category": "seafood",
+  "description": "The Spice House is an authentic Indian restaurant offering a variety of flavorful curries, tandoori specialties, and homemade naan. Known for its cozy ambience and rich aromas",
+  "timing": "9 am - 11 pm",
+  "active": true,
+  "contactNumber": "9876543210",
+  "address": "123 Flavor Street",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67c7187353139c6f75bf0ff7"
+  },
+  "foodType": "vegetarian",
+  "latitude": 22,
+  "longitude": 33,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1742358926/n8syjgxwwsnfuwq3p1xg.jpg",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ea91302cebf021fdc80870"
+  },
+  "title": "pizzariya",
+  "category": "fast_food",
+  "description": "Delightful ambiance paired with exceptional culinary creations for food enthusiasts.",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9924093706",
+  "address": "11,Shaival apartment ,Nehru-park circle",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67c7187353139c6f75bf0ff7"
+  },
+  "foodType": "vegetarian",
+  "latitude": 12,
+  "longitude": 20,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743425839/gnbxgcdqv6ljmumcwvh6.jpg",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ea92d52cebf021fdc80892"
+  },
+  "title": "burger wala",
+  "category": "fast_food",
+  "description": "A paradise for food lovers, offering unique and tasty dishes",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9428713088",
+  "address": "science city , Bhadaj circle",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67c7187353139c6f75bf0ff7"
+  },
+  "foodType": "vegetarian",
+  "latitude": 22,
+  "longitude": 22,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743426261/r0xv0ysfrbouxg3sg2bw.jpg",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ea934f2cebf021fdc808a3"
+  },
+  "title": " shelvish coffee",
+  "category": "cafe",
+  "description": "Authentic recipes, vibrant flavors, and a welcoming dining experience.",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9876543210",
+  "address": "111, gulby tekara aaproch",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67c718c753139c6f75bf0ff9"
+  },
+  "foodType": "organic",
+  "latitude": 12,
+  "longitude": 21,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743426383/n8gwpyh0hjufm9vxuaqy.jpg",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ea93a22cebf021fdc808b3"
+  },
+  "title": "lovely pasta",
+  "category": "fast_food",
+  "description": "Homemade recipes, fresh ingredients, and unforgettable flavors in every bite.",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9428713088",
+  "address": "53/Shubham Ro-house , kholvad",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "areaId": {
+    "$oid": "67c7183653139c6f75bf0ff5"
+  },
+  "foodType": "vegetarian",
+  "latitude": 12,
+  "longitude": 21,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743426466/ppcriv34tn2rwuqcsg5x.jpg",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ea940c2cebf021fdc808c3"
+  },
+  "title": "mithay wala",
+  "category": "dessert",
+  "description": " Experience fine dining with a fusion of global cuisines.",
+  "timing": "9 am - 11 pm",
+  "active": true,
+  "contactNumber": "9409738336",
+  "address": "21,gokulngar,near vandematram circle",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67eeb8a354af9d1473543b66"
+  },
+  "foodType": "organic",
+  "latitude": 23,
+  "longitude": 30,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743426572/spsfeyvmlvpzyltn0lun.jpg",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ea946f2cebf021fdc808d3"
+  },
+  "title": "seafood ",
+  "category": "seafood",
+  "description": "Serving handcrafted meals with passion and love for customers.",
+  "timing": "4:00 PM - 7:00 PM",
+  "active": true,
+  "contactNumber": "9924093706",
+  "address": "shyam complex , near Bhadaj circle",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67eebd3154af9d1473543bd1"
+  },
+  "foodType": "vegetarian",
+  "latitude": 23,
+  "longitude": 20,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743426671/jj6ibkpfhauykpewlhkt.jpg",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ebf88fd13dc7e3c169eea9"
+  },
+  "title": "hoco",
+  "category": "dessert",
+  "description": "Savor delicious meals crafted with fresh ingredients and expert care.",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9428713088",
+  "address": "11,himaliya tower ,Nehru-park circle",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67c7187353139c6f75bf0ff7"
+  },
+  "foodType": "vegetarian",
+  "latitude": 12,
+  "longitude": 20,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743517840/nclr9fgnntdfcdjefuyv.jpg",
+  "userId": {
+    "$oid": "67ea8a1bcb44eae418244a0b"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ebfb09d13dc7e3c169eed9"
+  },
+  "title": "gwaliya",
+  "category": "dessert",
+  "description": "Relax, unwind, and enjoy mouthwatering dishes in a great atmosphere.",
+  "timing": "9 am - 11 pm",
+  "active": true,
+  "contactNumber": "9876543210",
+  "address": "vastrapur lake",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67c7187353139c6f75bf0ff7"
+  },
+  "foodType": "organic",
+  "latitude": 12,
+  "longitude": 19,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743518473/pdmqewucynkj9xzuuzes.jpg",
+  "userId": {
+    "$oid": "67ea8a1bcb44eae418244a0b"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ecb4e36f6806c7d45d710b"
+  },
+  "title": "Zomato",
+  "category": "fast_food",
+  "description": "our go-to destination for fresh, flavorful, and satisfying meals.",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9428713088",
+  "address": "science city ",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67c7187353139c6f75bf0ff7"
+  },
+  "foodType": "vegetarian",
+  "latitude": 12,
+  "longitude": 21,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743566051/y72rl726g5jufg6hfsii.jpg",
+  "userId": {
+    "$oid": "67ea8a1bcb44eae418244a0b"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ee116477fa8004b3f4ec18"
+  },
+  "title": "ganesh",
+  "category": "fast_food",
+  "description": "Where passion for cooking meets the art of fine dining",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9409738336",
+  "address": "11,Shaival apartment ,Nehru-park circle",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67c7187353139c6f75bf0ff7"
+  },
+  "foodType": "vegetarian",
+  "latitude": 12,
+  "longitude": 21,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743655269/iicg0x5a0bmtypaxljv0.jpg",
+  "userId": {
+    "$oid": "67ee0af977fa8004b3f4ebe8"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ee64fc787e77cc78a42997"
+  },
+  "title": "shelvish coffe",
+  "category": "cafe",
+  "description": "Traditional flavors meet modern culinary techniques for an unforgettable meal.",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9924093706",
+  "address": "53/Shubham Ro-house",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "areaId": {
+    "$oid": "67c7183653139c6f75bf0ff5"
+  },
+  "foodType": "vegetarian",
+  "latitude": 12,
+  "longitude": 19,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743676669/qwvy9lnx9hmykm5wuo4a.jpg",
+  "userId": {
+    "$oid": "67ee0af977fa8004b3f4ebe8"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f2662a17321b3a83dd5860"
+  },
+  "title": "krishna",
+  "category": "fast_food",
+  "description": "Authentic flavors made with love and tradition.",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9428713088",
+  "address": "science city , Bhadaj circle",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "areaId": {
+    "$oid": "67eebd3154af9d1473543bd1"
+  },
+  "foodType": "vegetarian",
+  "latitude": 12,
+  "longitude": 21,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743939115/rffrlrp7ywjvtn05jtiu.jpg",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f266f017321b3a83dd587a"
+  },
+  "title": "hoco",
+  "category": "dessert",
+  "description": "Where good food meets great ambiance.",
+  "timing": "10:00 AM - 11:00 PM",
+  "active": true,
+  "contactNumber": "9913364266",
+  "address": "21,gokulngar,near Rachana circle",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "areaId": {
+    "$oid": "67c717e153139c6f75bf0ff3"
+  },
+  "foodType": "vegetarian",
+  "latitude": 11,
+  "longitude": 12,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743939314/rabwiuynzppwvfqa9iwf.jpg",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67fe161f4837c5e74e2c40dc"
+  },
+  "title": "coffee bar",
+  "category": "cafe",
+  "description": "Savor the perfect blend of crispy crust, rich tomato sauce, and gooey melted cheese, topped with the finest fresh ingredients. ",
+  "timing": "08:00 PM - 05:00 AM",
+  "active": true,
+  "contactNumber": "9409738336",
+  "address": "53/Shubham Ro-house",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "areaId": {
+    "$oid": "67c7183653139c6f75bf0ff5"
+  },
+  "foodType": "vegetarian",
+  "latitude": 12,
+  "longitude": 12,
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1744705055/osfymfbo2745sz0rrnzk.jpg",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "__v": 0
+}]

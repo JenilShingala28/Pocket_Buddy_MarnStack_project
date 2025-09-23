@@ -1,0 +1,17 @@
+pocket buddy 
+
+
+admin == jenil@gmail.com
+	 jenil123
+
+owner == badal@yopmail.com
+	 badal123
+   
+      == chirag@yopmail.com
+         chirag123
+
+user == ronak@gmail.com
+        ronak123 
+ 	.
+	.
+	.

@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "67c55fa245c6c957fcd10125"
+  },
+  "name": "USER",
+  "description": "user data",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c55fce45c6c957fcd10127"
+  },
+  "name": "ADMIN",
+  "description": "admin data",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c55fe145c6c957fcd10129"
+  },
+  "name": "OWNER",
+  "description": "owner data",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d0f4d923c3532dc84d4e09"
+  },
+  "name": "MODERATOR",
+  "description": "moderatorId data",
+  "__v": 0
+}]

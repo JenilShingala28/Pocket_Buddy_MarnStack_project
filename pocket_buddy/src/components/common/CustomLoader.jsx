@@ -1,5 +1,5 @@
-import React from 'react'
-import '../../assets/loader.css'
+import React from "react";
+import "../../assets/loader.css";
 
 export const CustomLoader = () => {
   return (
@@ -14,5 +14,5 @@ export const CustomLoader = () => {
       <div class="banter-loader__box"></div>
       <div class="banter-loader__box"></div>
     </div>
-  )
-}
+  );
+};

@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "name": "surat",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "createdAt": {
+    "$date": "2025-03-04T15:04:31.130Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:04:31.130Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "name": "Ahmedabd",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "createdAt": {
+    "$date": "2025-03-04T15:05:13.257Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:05:13.257Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c716dd53139c6f75bf0fe9"
+  },
+  "name": "mumbai",
+  "stateId": {
+    "$oid": "67c6eff59bc0ecfca70750d2"
+  },
+  "createdAt": {
+    "$date": "2025-03-04T15:06:05.277Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:06:05.277Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c716e953139c6f75bf0feb"
+  },
+  "name": "pune",
+  "stateId": {
+    "$oid": "67c6eff59bc0ecfca70750d2"
+  },
+  "createdAt": {
+    "$date": "2025-03-04T15:06:17.243Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:06:17.243Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c7171953139c6f75bf0fed"
+  },
+  "name": "jaipur",
+  "stateId": {
+    "$oid": "67c6f0069bc0ecfca70750d4"
+  },
+  "createdAt": {
+    "$date": "2025-03-04T15:07:05.621Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:07:05.621Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c7174053139c6f75bf0fef"
+  },
+  "name": "kota",
+  "stateId": {
+    "$oid": "67c6f0069bc0ecfca70750d4"
+  },
+  "createdAt": {
+    "$date": "2025-03-04T15:07:44.122Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:07:44.122Z"
+  },
+  "__v": 0
+}]

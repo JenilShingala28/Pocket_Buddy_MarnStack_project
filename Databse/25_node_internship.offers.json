@@ -1,0 +1,384 @@
+[{
+  "_id": {
+    "$oid": "67e4e147e54d423a89cd077e"
+  },
+  "title": "sunday special",
+  "description": "Buy 1 Get 1 Free ",
+  "startDate": "2025-03-27",
+  "endDate": "2025-04-03",
+  "address": "11,Shaival apartment ,Nehru-park circle",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "foodType": "pizza",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743053126/isbuo3fo43fksit7wl1a.jpg",
+  "createdAt": {
+    "$date": "2025-03-27T05:25:27.531Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T16:06:16.928Z"
+  },
+  "__v": 0,
+  "restaurantName": "The Spice House 111"
+},
+{
+  "_id": {
+    "$oid": "67ea91762cebf021fdc8087c"
+  },
+  "title": "Feast Offer",
+  "description": " Get 20% off on all orders above $50 this weekend!",
+  "startDate": "2025-03-05",
+  "endDate": "2025-04-05",
+  "address": "11,Shaival apartment ,Nehru-park circle",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "foodType": "pizza",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743425910/eaxv2qp5zgkamr2shuxc.jpg",
+  "createdAt": {
+    "$date": "2025-03-31T12:58:30.350Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T13:37:46.332Z"
+  },
+  "__v": 0,
+  "restaurantName": "pizzariya"
+},
+{
+  "_id": {
+    "$oid": "67ea94fb2cebf021fdc808e1"
+  },
+  "title": "RAM NAVAMI OFFER",
+  "description": "Buy 1 Get 1 Free ",
+  "startDate": "2025-04-01",
+  "endDate": "2025-04-12",
+  "address": "111,alpha one mall, vastrapur",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "foodType": "burger",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743426811/hnv1zz5xw2rq7xjc05km.jpg",
+  "createdAt": {
+    "$date": "2025-03-31T13:13:31.533Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T13:38:05.119Z"
+  },
+  "__v": 0,
+  "restaurantName": "burger wala"
+},
+{
+  "_id": {
+    "$oid": "67ea95a22cebf021fdc808e5"
+  },
+  "title": "coffee offer",
+  "description": "special sunday offer ",
+  "startDate": "2025-04-01",
+  "endDate": "2025-04-14",
+  "address": "21,gokulngar,near Rachana circle",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "foodType": "coffee",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743426978/bub9vzzsvbgv64e8qngx.jpg",
+  "createdAt": {
+    "$date": "2025-03-31T13:16:18.432Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T13:39:19.948Z"
+  },
+  "__v": 0,
+  "restaurantName": "shelvish coffee"
+},
+{
+  "_id": {
+    "$oid": "67ea965c2cebf021fdc808e9"
+  },
+  "title": "Ayodhya Feast Deal",
+  "description": "Free Dessert on Orders Above ₹500",
+  "startDate": "2025-04-01",
+  "endDate": "2025-04-22",
+  "address": "science city , Bhadaj circle",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "foodType": "pasta",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743427164/jfzvwdfhgkzx98tb2ezh.jpg",
+  "createdAt": {
+    "$date": "2025-03-31T13:19:24.018Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T13:39:45.221Z"
+  },
+  "__v": 0,
+  "restaurantName": "lovely pasta"
+},
+{
+  "_id": {
+    "$oid": "67ea97caeb5906f3ccc8ae28"
+  },
+  "title": "Dessert special",
+  "description": "Special Family Combo",
+  "startDate": "2025-04-01",
+  "endDate": "2025-04-23",
+  "address": "103, surbhi complex, navrangpura",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "foodType": "burger",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743427523/vwaq7wiqiungrlvbjbs0.jpg",
+  "createdAt": {
+    "$date": "2025-03-31T13:25:30.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T13:40:09.413Z"
+  },
+  "__v": 0,
+  "restaurantName": "mithay wala"
+},
+{
+  "_id": {
+    "$oid": "67ea981beb5906f3ccc8ae2c"
+  },
+  "title": "Dessert combo",
+  "description": "Buy 1 Get 1 Free ",
+  "startDate": "2025-04-01",
+  "endDate": "2025-04-02",
+  "address": "108,science city , Bhadaj circle, ahmedabad",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "foodType": "coffee",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743427611/uc8lpza2cfath3sd7l1f.jpg",
+  "createdAt": {
+    "$date": "2025-03-31T13:26:51.376Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T13:40:35.804Z"
+  },
+  "__v": 0,
+  "restaurantName": "seafood reastaurants"
+},
+{
+  "_id": {
+    "$oid": "67ec123e0e8d63d5d3a2377e"
+  },
+  "title": "ram navmi",
+  "description": "Special Family Combo",
+  "startDate": "2025-04-09",
+  "endDate": "2025-04-24",
+  "address": "11,Shaival apartment ,Nehru-park circle",
+  "userId": {
+    "$oid": "67ea8a1bcb44eae418244a0b"
+  },
+  "foodType": "pasta",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743524414/ikdlfi7widgxdmrnfdzq.jpg",
+  "createdAt": {
+    "$date": "2025-04-01T16:20:14.416Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T15:52:17.292Z"
+  },
+  "__v": 0,
+  "restaurantName": "mithay wala"
+},
+{
+  "_id": {
+    "$oid": "67ec12d40e8d63d5d3a23784"
+  },
+  "title": "birthday offer",
+  "description": "Buy 1 Get 1 Free  for particular date ",
+  "startDate": "2025-04-08",
+  "endDate": "2025-04-29",
+  "address": "Vastrapur, near Alpha One Mall",
+  "userId": {
+    "$oid": "67ea8a1bcb44eae418244a0b"
+  },
+  "foodType": "coffee",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743524564/sxfaguzgy0bkvcrvx23e.jpg",
+  "createdAt": {
+    "$date": "2025-04-01T16:22:44.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T15:52:25.635Z"
+  },
+  "__v": 0,
+  "restaurantName": "coffee bar"
+},
+{
+  "_id": {
+    "$oid": "67ec13180e8d63d5d3a23788"
+  },
+  "title": "sunday special",
+  "description": " Get 20% off on all orders ",
+  "startDate": "2025-04-02",
+  "endDate": "2025-04-29",
+  "address": "11,Shaival apartment ,Nehru-park circle",
+  "userId": {
+    "$oid": "67ea8a1bcb44eae418244a0b"
+  },
+  "foodType": "burger",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743524632/qfqgwll7b88lrvt1kdym.jpg",
+  "createdAt": {
+    "$date": "2025-04-01T16:23:52.358Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T15:52:36.568Z"
+  },
+  "__v": 0,
+  "restaurantName": "burger wala"
+},
+{
+  "_id": {
+    "$oid": "67ecb52e6f6806c7d45d7115"
+  },
+  "title": "pizza",
+  "description": "Buy 1 Get 1 Free ",
+  "startDate": "2025-04-02",
+  "endDate": "2025-04-30",
+  "address": "science city ",
+  "userId": {
+    "$oid": "67ea8a1bcb44eae418244a0b"
+  },
+  "foodType": "pizza",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743566126/t4o7p2v2w0wqddijrv8x.jpg",
+  "createdAt": {
+    "$date": "2025-04-02T03:55:26.776Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T15:52:45.914Z"
+  },
+  "__v": 0,
+  "restaurantName": "pizzariya"
+},
+{
+  "_id": {
+    "$oid": "67ee11ee77fa8004b3f4ec40"
+  },
+  "title": "ram navami",
+  "description": "Buy 1 Get 1 Free ",
+  "startDate": "2025-04-10",
+  "endDate": "2025-04-24",
+  "address": "11,Shaival apartment ,Nehru-park circle",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "foodType": "pasta",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743655406/nvu2dyyncjxzbrivzuoe.jpg",
+  "createdAt": {
+    "$date": "2025-04-03T04:43:26.086Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T15:59:56.778Z"
+  },
+  "__v": 0,
+  "restaurantName": "The Spice House 111"
+},
+{
+  "_id": {
+    "$oid": "67ee659b787e77cc78a429d3"
+  },
+  "title": "birthday offer",
+  "description": "Buy 1 Get 1 Free ",
+  "startDate": "2025-04-06",
+  "endDate": "2025-04-06",
+  "address": "11,Shaival apartment ,Nehru-park circle",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "foodType": "coffee",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1743676828/fjsqvpcuh7ca1tzorgef.jpg",
+  "createdAt": {
+    "$date": "2025-04-03T10:40:27.681Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T16:06:22.608Z"
+  },
+  "__v": 0,
+  "restaurantName": "The Spice House 111"
+},
+{
+  "_id": {
+    "$oid": "67f600bd8a7969bc5db1fce0"
+  },
+  "restaurantName": "hoco",
+  "title": "Ramnavmi",
+  "description": "Buy 1 Get 1 Free ",
+  "startDate": "2025-04-02",
+  "endDate": "2025-05-17",
+  "address": "gokulngar,near Rachana circle",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "foodType": "dessert",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1744175292/n0njaaegqxhzizrqvyt5.jpg",
+  "createdAt": {
+    "$date": "2025-04-09T05:08:13.097Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-09T05:08:13.097Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f601718a7969bc5db1fcfa"
+  },
+  "restaurantName": "Mithai Wala  ",
+  "title": "Dessert special ",
+  "description": " Special Family Combo ",
+  "startDate": "2025-04-01",
+  "endDate": "2025-05-17",
+  "address": "103, surbhi complex, navrangpura",
+  "userId": {
+    "$oid": "67e0d67cae3a0330ce6ea165"
+  },
+  "foodType": "dessert",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1744175472/l6xeiznhzuiqshgk8ckn.jpg",
+  "createdAt": {
+    "$date": "2025-04-09T05:11:13.053Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-09T05:11:13.053Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67fe167a4837c5e74e2c40ec"
+  },
+  "restaurantName": "coffee bar",
+  "title": "sunday spacial",
+  "description": "Buy 1 Get 1 Free ",
+  "startDate": "2025-04-01",
+  "endDate": "2025-04-29",
+  "address": "53/Shubham Ro-house , kholvad",
+  "userId": {
+    "$oid": "67cf9ecf972ffcf200774f5d"
+  },
+  "foodType": "coffee",
+  "termsConditions": "true",
+  "imageURL": "https://res.cloudinary.com/dnbw20mzq/image/upload/v1744705146/t4f4wka2jbsn6msala40.jpg",
+  "createdAt": {
+    "$date": "2025-04-15T08:19:06.980Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-15T08:19:06.980Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "name": "Gujrat",
+  "createdAt": {
+    "$date": "2025-03-04T12:19:42.310Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T12:19:42.310Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c6eff59bc0ecfca70750d2"
+  },
+  "name": "Maharashtra",
+  "createdAt": {
+    "$date": "2025-03-04T12:20:05.309Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T12:20:05.309Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c6f0069bc0ecfca70750d4"
+  },
+  "name": "Rajasthan",
+  "createdAt": {
+    "$date": "2025-03-04T12:20:22.597Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T12:20:22.597Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c7b9102cbea7c3531c630b"
+  },
+  "name": "kashmir",
+  "createdAt": {
+    "$date": "2025-03-05T02:38:08.300Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-05T02:38:08.300Z"
+  },
+  "__v": 0
+}]

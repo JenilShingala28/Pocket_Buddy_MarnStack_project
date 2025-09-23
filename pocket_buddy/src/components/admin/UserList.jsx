@@ -13,7 +13,12 @@ export const UserList = () => {
   const getAllUser = async () => {
     try {
       setIsLoader(true);
-      const res = await axios.get("/users");
+      const token = localStorage.getItem("token");
+      const res = await axios.get("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setUsers(res.data.data);
     } catch (error) {
       console.error("Error fetching locations:", error);
@@ -88,25 +93,24 @@ export const UserList = () => {
     { field: "address", headerName: "address", width: 400 },
 
     {
-        field: "imageURL",
-        headerName: "Image",
-        width: 150,
-        renderCell: (params) => (
-          <img
-            src={params.row.imageURL || "https://via.placeholder.com/100"}
-            alt="Restaurant"
-            style={{
-              width: "100px",
-              height: "100px",
-              objectFit: "cover",
-              borderRadius: "8px",
-              border: "1px solid #ddd",
-              boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
-            }}
-          />
-        ),
-      },
-
+      field: "imageURL",
+      headerName: "Image",
+      width: 150,
+      renderCell: (params) => (
+        <img
+          src={params.row.imageURL || "https://via.placeholder.com/100"}
+          alt="Restaurant"
+          style={{
+            width: "100px",
+            height: "100px",
+            objectFit: "cover",
+            borderRadius: "8px",
+            border: "1px solid #ddd",
+            boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
+          }}
+        />
+      ),
+    },
 
     // // ✅ View Button
     // {

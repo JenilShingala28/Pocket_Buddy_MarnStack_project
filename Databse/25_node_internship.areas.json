@@ -1,0 +1,300 @@
+[{
+  "_id": {
+    "$oid": "67c717e153139c6f75bf0ff3"
+  },
+  "name": "kapodra",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "pincode": 395006,
+  "createdAt": {
+    "$date": "2025-03-04T15:10:25.542Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:10:25.542Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c7183653139c6f75bf0ff5"
+  },
+  "name": "kholvad",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "pincode": 394190,
+  "createdAt": {
+    "$date": "2025-03-04T15:11:50.107Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:11:50.107Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c7187353139c6f75bf0ff7"
+  },
+  "name": "vastrapur",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "pincode": 380015,
+  "createdAt": {
+    "$date": "2025-03-04T15:12:51.213Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:12:51.213Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c718c753139c6f75bf0ff9"
+  },
+  "name": "navrangpura",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "pincode": 380009,
+  "createdAt": {
+    "$date": "2025-03-04T15:14:15.671Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:14:15.671Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c7198653139c6f75bf0ffb"
+  },
+  "name": "Juhu",
+  "stateId": {
+    "$oid": "67c6eff59bc0ecfca70750d2"
+  },
+  "cityId": {
+    "$oid": "67c716dd53139c6f75bf0fe9"
+  },
+  "pincode": 400049,
+  "createdAt": {
+    "$date": "2025-03-04T15:17:26.678Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:17:26.678Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c719c653139c6f75bf0ffd"
+  },
+  "name": "Borivali East",
+  "stateId": {
+    "$oid": "67c6eff59bc0ecfca70750d2"
+  },
+  "cityId": {
+    "$oid": "67c716dd53139c6f75bf0fe9"
+  },
+  "pincode": 400066,
+  "createdAt": {
+    "$date": "2025-03-04T15:18:30.073Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:18:30.073Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c71a1c53139c6f75bf0fff"
+  },
+  "name": "Shivaji Nagar",
+  "stateId": {
+    "$oid": "67c6eff59bc0ecfca70750d2"
+  },
+  "cityId": {
+    "$oid": "67c716e953139c6f75bf0feb"
+  },
+  "pincode": 411005,
+  "createdAt": {
+    "$date": "2025-03-04T15:19:56.624Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:19:56.624Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c71a7853139c6f75bf1001"
+  },
+  "name": "Wagholi",
+  "stateId": {
+    "$oid": "67c6eff59bc0ecfca70750d2"
+  },
+  "cityId": {
+    "$oid": "67c716e953139c6f75bf0feb"
+  },
+  "pincode": 412207,
+  "createdAt": {
+    "$date": "2025-03-04T15:21:28.241Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-04T15:21:28.241Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eeb83454af9d1473543b62"
+  },
+  "name": "Thaltej",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "pincode": 380059,
+  "createdAt": {
+    "$date": "2025-04-03T16:32:52.186Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T16:32:52.186Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eeb88654af9d1473543b64"
+  },
+  "name": "Memnagar",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "pincode": 380052,
+  "createdAt": {
+    "$date": "2025-04-03T16:34:14.029Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T16:34:14.029Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eeb8a354af9d1473543b66"
+  },
+  "name": "Gota",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "pincode": 382481,
+  "createdAt": {
+    "$date": "2025-04-03T16:34:43.968Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T16:34:43.968Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eeb94254af9d1473543b6a"
+  },
+  "name": "Varachha",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "pincode": 395010,
+  "createdAt": {
+    "$date": "2025-04-03T16:37:22.493Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T16:37:22.493Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eeb95354af9d1473543b6c"
+  },
+  "name": "Mota Varachha",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "pincode": 394101,
+  "createdAt": {
+    "$date": "2025-04-03T16:37:39.626Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T16:37:39.626Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eeb99154af9d1473543b6e"
+  },
+  "name": "Katargam",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c7167f53139c6f75bf0fe5"
+  },
+  "pincode": 395004,
+  "createdAt": {
+    "$date": "2025-04-03T16:38:41.320Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T16:38:41.320Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67eebd3154af9d1473543bd1"
+  },
+  "name": "Science City",
+  "stateId": {
+    "$oid": "67c6efde9bc0ecfca70750d0"
+  },
+  "cityId": {
+    "$oid": "67c716a953139c6f75bf0fe7"
+  },
+  "pincode": 380060,
+  "createdAt": {
+    "$date": "2025-04-03T16:54:09.199Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-03T16:54:09.199Z"
+  },
+  "__v": 0
+}]
