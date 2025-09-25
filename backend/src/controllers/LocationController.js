@@ -4,24 +4,35 @@ const path = require("path");
 const cloudinaryUtil = require("../utils/CloudinaryUtil");
 const { Network } = require("inspector");
 const LocationModel = require("../models/LocationModel");
+const fs = require("fs");
 
-//storage
+// storage;
+// const storage = multer.diskStorage({
+//   destination: "./upload",
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
+
+const uploadDir = path.join(process.cwd(), "upload");
+
+// make sure folder exists
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 const storage = multer.diskStorage({
-  destination: "./upload",
+  destination: function (req, file, cb) {
+    cb(null, uploadDir); // ✅ relative folder
+  },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
 });
 
-//multer object....
-// const upload = multer({
-//   storage: storage,
-//   //fileFilter:
-// }).single("image");
-// Accept multiple files: up to 5 for example
 const upload = multer({
   storage: storage,
-}).array("images", 5); 
+}).array("images", 5);
 
 const addLocation = async (req, res) => {
   try {
@@ -41,9 +52,9 @@ const getAllLocation = async (req, res) => {
   try {
     const fetchLocation = await locationModel
       .find()
-      .populate("stateId","name")
-      .populate("cityId","name")
-      .populate("areaId","name");
+      .populate("stateId", "name")
+      .populate("cityId", "name")
+      .populate("areaId", "name");
     res.status(200).json({
       message: "fetch all added location successfully",
       data: fetchLocation,
@@ -150,7 +161,7 @@ const getAllLocationByUserId = async (req, res) => {
   }
 };
 
-//update image and data 
+//update image and data
 const updateLocationById1 = async (req, res) => {
   try {
     // Handle the file upload first
@@ -165,7 +176,9 @@ const updateLocationById1 = async (req, res) => {
       // Check if an image is uploaded
       if (req.file) {
         // If a new image is uploaded, upload it to Cloudinary
-        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(req.file);
+        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(
+          req.file
+        );
         console.log("Cloudinary Response:", cloudinaryResponse);
 
         // Store the image URL in the request body
@@ -206,12 +219,12 @@ const updateLocationById2 = async (req, res) => {
 
       // Upload files to Cloudinary
       if (req.files && req.files.length > 0) {
-        const uploadPromises = req.files.map(file =>
+        const uploadPromises = req.files.map((file) =>
           cloudinaryUtil.uploadFileToCloudinary(file)
         );
 
         const uploadResults = await Promise.all(uploadPromises);
-        const imageUrls = uploadResults.map(result => result.secure_url);
+        const imageUrls = uploadResults.map((result) => result.secure_url);
 
         // Add image URLs to request body
         req.body.imageURL = imageUrls;
@@ -238,7 +251,6 @@ const updateLocationById2 = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
-
 
 const updatedLocationById = async (req, res) => {
   try {
@@ -284,7 +296,9 @@ const getLocationById = async (req, res) => {
 
 const deleteLocationById = async (req, res) => {
   try {
-    const deletedLocation = await LocationModel.findByIdAndDelete(req.params.id);
+    const deletedLocation = await LocationModel.findByIdAndDelete(
+      req.params.id
+    );
 
     if (!deletedLocation) {
       return res.status(404).json({

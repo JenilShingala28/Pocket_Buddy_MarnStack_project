@@ -3,10 +3,27 @@ const offerModel = require("../models/OfferModel");
 const multer = require("multer");
 const path = require("path");
 const cloudinaryUtil = require("../utils/CloudinaryUtil");
+const fs = require("fs");
 
-//storage
+// storage
+// const storage = multer.diskStorage({
+//   destination: "/upload",
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
+
+const uploadDir = path.join(process.cwd(), "upload");
+
+// make sure folder exists
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 const storage = multer.diskStorage({
-  destination: "/upload",
+  destination: function (req, file, cb) {
+    cb(null, uploadDir); // ✅ relative folder
+  },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
@@ -139,7 +156,9 @@ const updateOfferById1 = async (req, res) => {
       // Check if an image is uploaded
       if (req.file) {
         // If a new image is uploaded, upload it to Cloudinary
-        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(req.file);
+        const cloudinaryResponse = await cloudinaryUtil.uploadFileToCloudinary(
+          req.file
+        );
         console.log("Cloudinary Response:", cloudinaryResponse);
 
         // Store the image URL in the request body
@@ -240,5 +259,5 @@ module.exports = {
   getOfferById,
   addWithOfferFile,
 
-  updateOfferById1
+  updateOfferById1,
 };

@@ -2,6 +2,7 @@ const { json } = require("express");
 const UserModel = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 
+const fs = require("fs");
 const multer = require("multer");
 const path = require("path");
 const cloudinaryUtil = require("../utils/CloudinaryUtil");
@@ -10,9 +11,25 @@ const mailUtil = require("../utils/MailUtil");
 const jwt = require("jsonwebtoken");
 const secret = "secret";
 
-//storage
+// storage;
+// const storage = multer.diskStorage({
+//   destination: "./upload",
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
+
+const uploadDir = path.join(process.cwd(), "upload");
+
+// make sure folder exists
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 const storage = multer.diskStorage({
-  destination: "./upload",
+  destination: function (req, file, cb) {
+    cb(null, uploadDir); // ✅ relative folder
+  },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
@@ -103,20 +120,65 @@ const ulogin = async (req, res) => {
 //   }
 // };
 
+// const ulogin = async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+
+//     if (!email || !password) {
+//       return res
+//         .status(400)
+//         .json({ message: "Email and password are required" });
+//     }
+
+//     const foundUser = await UserModel.findOne({ email }).populate("roleId");
+
+//     if (!foundUser) {
+//       return res.status(404).json({ message: "Email not found" });
+//     }
+
+//     if (!foundUser.password || typeof foundUser.password !== "string") {
+//       return res
+//         .status(500)
+//         .json({ message: "User password is missing or invalid in DB" });
+//     }
+
+//     // bcrypt.compareSync throws error if either argument is invalid
+//     let isMatch = false;
+//     try {
+//       isMatch = bcrypt.compareSync(password, foundUser.password);
+//     } catch (err) {
+//       console.error("Bcrypt error:", err);
+//       return res.status(500).json({ message: "Error comparing passwords" });
+//     }
+
+//     if (!isMatch) {
+//       return res.status(401).json({ message: "Incorrect password" });
+//     }
+
+//     res.status(200).json({
+//       message: "Login successful",
+//       data: foundUser,
+//       token: "your-jwt-token", // optional
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };
+
 const signup = async (req, res) => {
   try {
+    // Check if a user already exists with the same email or contact
+    const existingUser = await UserModel.findOne({
+      email: req.body.email,
+    });
 
-      // Check if a user already exists with the same email or contact
-      const existingUser = await UserModel.findOne({
-        email: req.body.email 
+    if (existingUser) {
+      return res.status(400).json({
+        statusCode: 400,
+        message: "User with this email already exists.",
       });
-  
-      if (existingUser) {
-        return res.status(400).json({
-          statusCode: 400,
-          message: "User with this email already exists.",
-        });
-      }
+    }
 
     const salt = bcrypt.genSaltSync(10);
     console.log("🚀 ~ signup ~ salt:", salt);
@@ -131,8 +193,8 @@ const signup = async (req, res) => {
       "welcome to pocket buddy app",
       "welcome to our restaurants "
     );
-     // Return success
-     const { password, ...userWithoutPassword } = createUser._doc;
+    // Return success
+    const { password, ...userWithoutPassword } = createUser._doc;
     res.status(201).json({
       statusCode: 201,
       message: "User created successfully.",
@@ -451,7 +513,6 @@ const updateOwnerProfileById = async (req, res) => {
   }
 };
 
-
 const updateAdminProfileById = async (req, res) => {
   try {
     // Handle the file upload first
@@ -563,47 +624,124 @@ const deleteUserById = async (req, res) => {
   }
 };
 
+// const loginUserWithToken = async (req, res) => {
+//   const { email, password } = req.body;
+
+//   const foundUserFromEmail = await UserModel.findOne({ email: email }).populate(
+//     "roleId"
+//   );
+
+//   if (foundUserFromEmail) {
+//     const isMatch = bcrypt.compareSync(password, foundUserFromEmail.password);
+
+//     if (isMatch) {
+//       //token...
+//       //all object to convert token
+//       //const token = jwt.sign(foundUserFromEmail.toObject(), secret);
+
+//       //only id and email to convert token
+//       const token = jwt.sign(
+//         {
+//           id: foundUserFromEmail._id,
+//           email: foundUserFromEmail.email,
+//           roleId: foundUserFromEmail.roleId,
+//         },
+//         secret
+//       );
+
+//       //const token = jwt.sign({id:foundUserFromEmail._id},secret)
+
+//       res.status(200).json({
+//         message: "user loggedin..",
+
+//         token: token,
+//         data: {
+//           _id: foundUserFromEmail._id,
+//           email: foundUserFromEmail.email,
+//           roleId: foundUserFromEmail.roleId, // this includes the `.name` if populated
+//         },
+//       });
+//     } else {
+//       res.status(420).json({
+//         message: "invalid cred...",
+//       });
+//     }
+//   } else {
+//     res.status(404).json({
+//       message: "user not found..",
+//     });
+//   }
+// };
+
 const loginUserWithToken = async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const foundUserFromEmail = await UserModel.findOne({ email: email }).populate("roleId");
-
-  if (foundUserFromEmail) {
-    const isMatch = bcrypt.compareSync(password, foundUserFromEmail.password);
-
-    if (isMatch) {
-      //token...
-      //all object to convert token 
-      //const token = jwt.sign(foundUserFromEmail.toObject(), secret);
-      
-      //only id and email to convert token
-      const token = jwt.sign({ id: foundUserFromEmail._id, 
-        email: foundUserFromEmail.email,
-        roleId: foundUserFromEmail.roleId }, secret)
-
-      //const token = jwt.sign({id:foundUserFromEmail._id},secret)
-
-      res.status(200).json({
-        message: "user loggedin..",
-
-        token: token,
-        data: {
-          _id: foundUserFromEmail._id,
-          email: foundUserFromEmail.email,
-          roleId: foundUserFromEmail.roleId,  // this includes the `.name` if populated
-        },
-      });
-    } else {
-      res.status(420).json({
-        message: "invalid cred...",
-      });
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password required" });
     }
-  } else {
-    res.status(404).json({
-      message: "user not found..",
+
+    const foundUserFromEmail = await UserModel.findOne({ email })
+      .select("+password") // Include the password field
+      .populate("roleId") // Populate main user's role
+      .populate({
+        path: "userId",
+        populate: { path: "roleId" }, // Populate roleId inside userId
+      });
+
+    if (!foundUserFromEmail) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // if (!foundUserFromEmail.password) {
+    //   return res.status(500).json({ message: "User has no password in DB" });
+    // }
+
+    const passwordFromDB =
+      foundUserFromEmail.password || foundUserFromEmail.userId?.password;
+
+    if (!passwordFromDB) {
+      return res
+        .status(500)
+        .json({ message: "No password found for this user" });
+    }
+
+    const isMatch = bcrypt.compareSync(password, passwordFromDB);
+
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    const roleData =
+      foundUserFromEmail.roleId || foundUserFromEmail.userId?.roleId;
+
+    const token = jwt.sign(
+      {
+        id: foundUserFromEmail._id,
+        email: foundUserFromEmail.email,
+        roleId: roleData,
+      },
+      secret
+    );
+
+    res.status(200).json({
+      message: "User logged in",
+      token,
+      data: {
+        _id: foundUserFromEmail._id,
+        email: foundUserFromEmail.email,
+        firstName: foundUserFromEmail.firstName,
+        lastName: foundUserFromEmail.lastName,
+        roleId: roleData,
+        userId: foundUserFromEmail.userId,
+      },
     });
+  } catch (err) {
+    console.error("Login error:", err);
+    res.status(500).json({ message: "Server error" });
   }
 };
+
 module.exports = {
   getUser,
   deleteUser,

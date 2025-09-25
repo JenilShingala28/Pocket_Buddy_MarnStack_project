@@ -5,7 +5,17 @@ const dotenv = require("dotenv");
 dotenv.config();
 //express object..
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // local dev
+      "https://pocket-buddy-frontend.vercel.app", // your vercel frontend
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(express.json()); //to accept data as json...
 
 const roleRoutes = require("./src/routes/RoleRouter");
@@ -38,16 +48,29 @@ app.use("/rating", ratingRoutes);
 const notificationRoutes = require("./src/routes/NotificationRouter");
 app.use("/notification", notificationRoutes);
 
-const dashboardRoutes = require("./src/routes/DashBoardRouter"); 
+const dashboardRoutes = require("./src/routes/DashBoardRouter");
 app.use("/dashboard", dashboardRoutes); //
 
-mongoose.connect(process.env.DB_URL).then(() => {
-  console.log("database connected....");
-});
+// mongoose.connect(process.env.DB_URL).then(() => {
+//   console.log("database connected....");
+// });
+
+const dbURL =
+  process.env.NODE_ENV === "production"
+    ? process.env.PROD_DB_URL // MongoDB Atlas
+    : process.env.DB_URL; // Local MongoDB / Compass
+
+mongoose
+  .connect(dbURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database connected..."))
+  .catch((err) => console.error("DB Connection Error:", err));
 
 // server creation...
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("server started on port number", PORT);
 });
